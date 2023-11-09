@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+
+<meta property="og:url" content="https://marecnov.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marek Ivanov`s blog">
+<meta property="og:description" content="About me - about everyone">
+<meta property="og:image" content="https://marecnov.github.io/static/preview.png">
+<meta property="og:locale" content="en_US" />
+<link rel="shortcut icon" href="../../static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="../../static/style.css?h=d4285ec1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<title>Reflections</title>
+</head>
+<body>
+<header><a href="../../" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+
+  <a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
+
+  <div id="myModal" class="modal">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <span class="close">&times;</span>
+        </div>
+
+        <div class="modal-body">
+
+          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Language</div>
+              <select>
+                  <option value="en">English</option>
+                  <option value="ru">Russian</option>
+              </select>
+          </section>
+
+          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Dark mode</div>
+          <input type="checkbox">
+          </section>
+          
+        </div>
+    
+        <div class="modal-footer">
+          <button>Apply</button>
+        </div>
+
+      </div>
+    
+  </div>
+  <script>
+      var modal = document.getElementById("myModal");
+      var link = document.getElementById("settingsLink");
+      var span = document.getElementsByClassName("close")[0];
+      let applyBtn = document.querySelector('.modal-footer button')
+      let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
+
+      link.onclick = function() {
+        modal.style.display = "block";
+        receiveOrInventSettings()
+      }
+      
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      
+      applyBtn.onclick = function(){
+          let str = `{"darkMode":"${inputs[1].checked?'dark':'light'}","lang":"${inputs[0].value}"}` 
+          localStorage.setItem('SETTINGS',str)
+          receiveOrInventSettings()
+          modal.style.display = "none";
+      }
+
+  function receiveOrInventSettings(){
+      // invent
+      if(localStorage.getItem('SETTINGS')==null){
+          let str = `{"darkMode":"${window.matchMedia && 
+              window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"}","lang":"${
+                window.location.pathname[1]=='r' ? 'ru' : 'en'}"}`   
+          localStorage.setItem('SETTINGS',str)
+      }
+      // use
+      let data = JSON.parse(localStorage.getItem('SETTINGS'))
+      // settings control
+          inputs[0].value = data.lang
+          inputs[1].checked = data.darkMode == 'light' ? false : true
+      // theme and language control
+          document.documentElement.classList.add(data.darkMode)
+          document.documentElement.classList.remove(data.darkMode == 'light' ? 'dark' : 'light')
+
+          if(data.lang == 'en' && window.location.pathname[1]=='r'){
+              window.location.replace(window.location.origin + window.location.pathname.substring(3))
+          }
+          else if(data.lang=="ru" && window.location.pathname[1]!='r'){
+              window.location.replace(window.location.origin + "/ru"+ window.location.pathname)
+          }
+  }
+
+  receiveOrInventSettings()
+  </script>
+
+</header>
+<main>
+<div class="layout">
+    <div class="about-me">
+    
+        <div class='openCloser'>
+            <p>About me</p>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+        <div class="panel">
+            <img src="../../static/avatar.jpg?h=ab5c279d">
+                <h2>Marek Ivanov</h2>
+            <p>I do live life, enjoy great things, create meaning...</p>
+    
+            <div class="contacts">
+                <div class="links">
+                    <a href="mailto:marecnov@gmail.com"><i class="fa fa-envelope-o" ></i></a>
+                    <a href="https://instagram.com/marecnov"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>  
+        </div> 
+    </div>
+    <script>
+    let openCloser = document.querySelector('.openCloser')
+    let panel = document.querySelector('.panel')
+    let chevron = document.querySelector('.openCloser i')
+    openCloser.onclick = () => {
+        localStorage.setItem("About-Me-Closed",localStorage.getItem("About-Me-Closed")=="false"? 'true':'false')
+        receiveOrUse()
+    }
+
+    function receiveOrUse(){
+        if(localStorage.getItem("About-Me-Closed")==null){
+            localStorage.setItem("About-Me-Closed",'false')
+        }
+
+        if(localStorage.getItem('About-Me-Closed')=='false'){
+            panel.style.maxHeight = 'unset'
+            chevron.style.rotate = '90deg'
+        }
+        else{
+            panel.style.maxHeight = null
+            chevron.style.rotate = null
+        }
+    }
+    receiveOrUse()
+    </script>
+
+    <section class="post-and-pagination">
+        <section class="posts">
+        <h2>Reflections</h2>
+
+<article class="post">
+    <div >
+        <h2>Scythian plan</h2>
+        <p>16 August 2023</p>
+    </div>
+ 
+     <a href="../../2023/8/16/skifskij-plan/">Read more</a>
+        </article>
+
+<article class="post">
+    <div >
+        <h2>What purpose does my blog serve?</h2>
+        <p>21 July 2023</p>
+    </div>
+ <section><p>What you as a reader can <strong>expect</strong> to see on this site</p>
+</section>
+     <a href="../../2023/7/21/what-purpose-does-my-blog-serve/">Read more</a>
+        </article>
+
+<article class="post">
+    <div >
+        <h2>Third post</h2>
+        <p>11 July 2023</p>
+    </div>
+ <section><p>Every second counts!</p>
+</section>
+     <a href="../../2023/7/11/third-post/">Read more</a>
+        </article>
+
+</section>
+ 
+</section>
+<section class="searchByTags">
+    
+  <form>
+    <input id="mySearch" placeholder="Search..." autocomplete='off' onkeyup="searchFilter()" type="text">
+    <div><i class="fa fa-search" aria-hidden="true"></i></div>
+  </form>
+  <h3>Categories</h3>
+  <ul id="categories"><li class="category"><a href="../design/">Design</a></li><li class="category"><a href="../games/">Games</a></li><li class="category"><a href="../getting-better/">Getting better</a></li><li class="category"><a href="../nostalgia/">Nostalgia</a></li><li class="category"><a href="./">Reflections</a></li><li class="category"><a href="../series/">Series</a></li></ul>
+  <script>
+    function searchFilter() {
+
+      let filter = document.getElementById("mySearch").value.toUpperCase();
+      let ul = document.getElementById("categories");
+      let li = ul.getElementsByClassName("category");
+      for (let i = 0; i < li.length; i++) {
+        if (li[i].innerText.toUpperCase().indexOf(filter) > -1) {
+          li[i].style.display = "";
+        } else {
+          li[i].style.display = "none";
+        }
+      }
+    }
+
+  </script>
+
+</section></div>
+<script>
+    let posts = document.querySelector('section.post-and-pagination')
+    posts.scrollIntoView()
+</script>
+</main>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta property="og:url" content="https://marecnov.github.io/ru">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Блог Марека Иванов">
+<meta property="og:description" content="Обо мне - о всех">
+<meta property="og:image" content="https://marecnov.github.io//static/previewRu.png">
+<link rel="shortcut icon" href="../../../../../static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="../../../../../static/style.css?h=d4285ec1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<title>Обновленная нумерация страниц, Lektor</title>
+</head>
+<body>
+<header><a href="../../../../" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+
+  <a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
+
+  <div id="myModal" class="modal">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Настройки</h2>
+          <span class="close">&times;</span>
+        </div>
+
+        <div class="modal-body">
+
+          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Язык</div>
+              <select>
+                  <option value="en">Английский</option>
+                  <option value="ru">Русский</option>
+              </select>
+          </section>
+
+          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Темный режим</div>
+          <input type="checkbox">
+          </section>
+          
+        </div>
+    
+        <div class="modal-footer">
+          <button>Применить</button>
+        </div>
+
+      </div>
+    
+  </div>
+  <script>
+      var modal = document.getElementById("myModal");
+      var link = document.getElementById("settingsLink");
+      var span = document.getElementsByClassName("close")[0];
+      let applyBtn = document.querySelector('.modal-footer button')
+      let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
+
+      link.onclick = function() {
+        modal.style.display = "block";
+        receiveOrInventSettings()
+      }
+      
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
+      
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+      
+      applyBtn.onclick = function(){
+          let str = `{"darkMode":"${inputs[1].checked?'dark':'light'}","lang":"${inputs[0].value}"}` 
+          localStorage.setItem('SETTINGS',str)
+          receiveOrInventSettings()
+          modal.style.display = "none";
+      }
+
+  function receiveOrInventSettings(){
+      // invent
+      if(localStorage.getItem('SETTINGS')==null){
+          let str = `{"darkMode":"${window.matchMedia && 
+              window.matchMedia('(prefers-color-scheme: dark)').matches ? "dark" : "light"}","lang":"${
+                window.location.pathname[1]=='r' ? 'ru' : 'en'}"}`   
+          localStorage.setItem('SETTINGS',str)
+      }
+      // use
+      let data = JSON.parse(localStorage.getItem('SETTINGS'))
+      // settings control
+          inputs[0].value = data.lang
+          inputs[1].checked = data.darkMode == 'light' ? false : true
+      // theme and language control
+          document.documentElement.classList.add(data.darkMode)
+          document.documentElement.classList.remove(data.darkMode == 'light' ? 'dark' : 'light')
+
+          if(data.lang == 'en' && window.location.pathname[1]=='r'){
+              window.location.replace(window.location.origin + window.location.pathname.substring(3))
+          }
+          else if(data.lang=="ru" && window.location.pathname[1]!='r'){
+              window.location.replace(window.location.origin + "/ru"+ window.location.pathname)
+          }
+  }
+
+  receiveOrInventSettings()
+  </script>
+
+</header>
+<main><div class="layout">
+    <div class="about-me">
+    
+        <div class='openCloser'>
+            <p>Обо мне</p>
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+        <div class="panel">
+            <img src="../../../../../static/avatar.jpg?h=ab5c279d">
+            <h2>Марек Иванов</h2>
+            <p>Я занимаюсь спортом и кодом, восхищаюсь изо, литературой и фото. <br>
+                Моя любовь - JS (React, Next.js), python (Flask, Django).</p>
+    
+            <div class="contacts">
+                <div class="links">
+                    <a href="mailto:marecnov@gmail.com"><i class="fa fa-envelope-o" ></i></a>
+                    <a href="https://instagram.com/marecnov"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </div>
+            </div>  
+        </div> 
+    </div>
+    <script>
+    let openCloser = document.querySelector('.openCloser')
+    let panel = document.querySelector('.panel')
+    let chevron = document.querySelector('.openCloser i')
+    openCloser.onclick = () => {
+        localStorage.setItem("About-Me-Closed",localStorage.getItem("About-Me-Closed")=="false"? 'true':'false')
+        receiveOrUse()
+    }
+
+    function receiveOrUse(){
+        if(localStorage.getItem("About-Me-Closed")==null){
+            localStorage.setItem("About-Me-Closed",'false')
+        }
+
+        if(localStorage.getItem('About-Me-Closed')=='false'){
+            panel.style.maxHeight = 'unset'
+            chevron.style.rotate = '90deg'
+        }
+        else{
+            panel.style.maxHeight = null
+            chevron.style.rotate = null
+        }
+    }
+    receiveOrUse()
+    </script>
+<div class="posts" id="top">
+<article class="post">
+    <div class="title">
+        <h2>Обновленная нумерация страниц, Lektor</h2>
+        <p>15 июля 2023</p>
+    </div>
+ <section><p><a href="#showcase">Пример: радиус = 2</a></p>
+<p>Для начала вам нужно посетить <a href="https://www.getlektor.com/docs/guides/pagination/">страницу пагинации Lektor</a>, чтобы ознакомиться с контекстом разбиения на страницы. Вам нужно убедиться, что вы все правильно настроили.</p>
+<p>Из настройки разбивки на страницы запомните свойство <strong>per_page</strong>.
+На следующем шаге перейдите к <a href="https://www.getlektor.com/docs/guides/pagination/#rendering-a-pagination">макросу рендеринга пагинации</a> в вашем проекте.</p>
+<p>В <em>div.pagination</em> мы делим <a href="https://www.getlektor.com/docs/api/db/record/pagination/">общее количество страниц</a> на свойство per_page:</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p>Затем мы устанавливаем желаемый <em>радиус</em> и вводим переменную для <em>текущей страницы</em></p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code1.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p>Макрос render_pages отображает ссылку для каждой страницы между начальной (start) и конечной (end) включительно, проверяя, является ли отображаемая страница текущей. Если да, добавляем класс «current»</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code2.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p>Макрос start рендерит пропуск между 1 и остальными ссылками</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code3.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p>Тоже самое и для макроса end</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code4.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p>После всего этого идет определение условий, они могут быть у каждого свои, но я выбрал <strong>базовый</strong>  случай, который <em>подходит</em> мне.</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/code5.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p><a name="showcase"></a></p>
+<h2>#ДИСЦИПЛИНА</h2>
+<p>Пример: радиус = 2</p>
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/screenshot-1.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/screenshot-2.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section>
+<img src="../../../../../2023/7/15/updated-pagination/screenshot-3.png" width="100%"style="margin: 0 auto;display: block;">
+
+</section>
+
+<section><p><a href="#top">Обратно наверх</a></p>
+</section><div class="tags">
+         <a class="tag" href="../../../../categories/dev/">Разработка</a>
+     </div></article>
+</div>
+    <div class="post-list">
+        <h3>Последние Посты</h3>
+        <a href="../../../9/13/dva-stiha/" ><b>Два стиха</b> 
+        <small>13&nbsp;сентября&nbsp;2023</small></a><a href="../../../8/20/some-poems-of-great-creators/" ><b>Творения великих гениев</b> 
+        <small>20&nbsp;августа&nbsp;2023</small></a><a href="../../../8/16/skifskij-plan/" ><b>Скифский план</b> 
+        <small>16&nbsp;августа&nbsp;2023</small></a><a href="../../21/what-purpose-does-my-blog-serve/" ><b>Какой целе служит этот блог?</b> 
+        <small>21&nbsp;июля&nbsp;2023</small></a><a href="./" class="current"><b>Обновленная нумерация страниц, Lektor</b> 
+        <small>15&nbsp;июля&nbsp;2023</small></a><a href="../../13/current-goals/" ><b>Текущие цели</b> 
+        <small>13&nbsp;июля&nbsp;2023</small></a><a href="../../12/new-legendary-favicon/" ><b>Новый легендарная иконка и еще многое</b> 
+        <small>12&nbsp;июля&nbsp;2023</small></a><a href="../../11/games-that-took-my-heart/" ><b>Игры, которые смогли занять место в моем сердце</b> 
+        <small>11&nbsp;июля&nbsp;2023</small></a><a href="../../11/third-post/" ><b>Третий пост</b> 
+        <small>11&nbsp;июля&nbsp;2023</small></a><a href="../../10/second-news/" ><b>Вторая новость</b> 
+        <small>10&nbsp;июля&nbsp;2023</small></a>
+    </div>
+</div></main>
+</body>
+</html>

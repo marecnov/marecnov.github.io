@@ -1,0 +1,82 @@
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    padding-top: 5em; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+}
+    
+.modal-content {
+    position: relative;
+    background-color: var(--post-background-color);
+    margin: auto;
+    padding: 1em;
+    width: min(700px,100%);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+    
+.close {
+    color: var(--main-text-color);
+    font-size: 2em;
+    font-weight: bold;
+}
+    
+.close:hover,
+.close:focus {
+    color: var(--main-text-color);
+    text-decoration: none;
+    cursor: pointer;
+}
+    
+.modal-header {
+    display: flex;
+    color: var(--main-text-color);
+    justify-content: space-between;
+    align-items: center;
+}
+    
+.modal-body {
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1em;
+    font-size: 1.2em;
+}
+.modal-body section{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+}
+.modal-body select{
+    font-size: 1em;
+    color: var(--main-text-color);
+}
+.modal-body input[type='checkbox']{
+    cursor: pointer;
+    width: 2em;
+    color-scheme: light;
+}
+.modal-footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 1em;
+}
+.modal-footer button{
+    background-color: var(--base-color);
+    color: #fff;
+    outline: 0;
+    border: 0;
+    font-size: 1.3em;
+    cursor: pointer;
+    padding: 0.3em 1.2em;
+}
