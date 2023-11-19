@@ -321,58 +321,7 @@ div.posts{
     cursor: pointer;
     padding: 0.3em 1.2em;
 }
-.searchByTags{
-    top: 1em;
-    position: sticky;
-    width: min(100%,640px);
-    margin: 0 auto;
-}
-.searchByTags form{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: var(--post-border);
-}
-.searchByTags form > div{
-    background-color: var(--base-color);
-    color: #fff;
-    padding: 0.5em 0.7em;
-    cursor: pointer;
-}
-.searchByTags h3{
-    background-color: var(--base-color);
-    color: #fff;
-    padding: 0.1em 0.2em;
-    font-weight: 500;
-    text-align: center;
-    letter-spacing: 2px;
-    font-size: 1.4em;
-}
-#mySearch {
-    width: 100%;
-    font-size: 1em;
-    padding: 0.5em;
-    border: 0;
-  }
-  #mySearch:active,#mySearch:focus{
-    border: 0;
-    outline: 0;
-  }
-  #categories{
-    padding-inline-start: 0;
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 0.5em;
-    font-size: 1.2em;
-  }
-  .category{
-    background-color: var(--post-background-color);
-    padding: 0.2em 0.4em;
-    border: var(--post-border);
-  }
+
 @media screen and (max-width: 1440px) {
     .layout{
         grid-template-columns: 1fr;
@@ -395,10 +344,6 @@ div.posts{
         border: var(--post-border);
         background-color: var(--post-background-color);
         padding: 0 1em;
-    }
-    .searchByTags{
-        position: unset;
-        grid-area: 1/1;
     }
 }
 @media screen and (max-width: 666px) {
