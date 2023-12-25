@@ -52,8 +52,11 @@ a{
     color: var(--main-color);
     text-decoration: none;
 }
-a:not(header a):not(.tag):not(.pagination a):not(.post-list > a):hover{
-    text-decoration: underline !important;
+a>h2{
+    color: var(--main-text-color);
+}
+a>h2:hover{
+    color: var(--main-color);
 }
 header{
     display: flex;
@@ -128,27 +131,6 @@ div.links a{
 }
 ::selection{
     background-color: rgba(255,255,0,.3);
-}
-.tags{
-    padding: 8px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: flex-start;
-    align-items: center;
-    column-gap: 0.3em;
-    row-gap: 0.4em;
-}
-.tag{
-    color: #fff;
-    background-color: var(--base-color);
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-weight: 300;
-    text-decoration: none;
-    cursor: pointer;
-    font-size: .85em;
 }
 .posts{
     display: flex;
