@@ -167,11 +167,11 @@
         
 <article class="post">
     <div >
-        <a href="../../odarenie/"><h2>Одарение</h2></a>
-        <p></p>
+        <a href="../../2023/7/9/first-post-for-blog/"><h2>First post for blog</h2></a>
+        <p>9 July 2023</p>
     </div>
 
-    <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
+    <section><p>Let's begin with this  example!</p>
 </section>
 
     </article>
@@ -209,7 +209,7 @@
         .catch(err => console.error(err));
     }
 
-    if(localStorage.getItem("COUNTERAPI",null) != null && (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
+    if(localStorage.getItem("COUNTERAPI",null) != null || (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
         changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
     }
     else fetchVisits() 

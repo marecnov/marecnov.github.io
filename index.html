@@ -167,6 +167,17 @@
         
 <article class="post">
     <div >
+        <a href="2023/12/27/odarenie/"><h2>Одарение</h2></a>
+        <p>27 December 2023</p>
+    </div>
+
+    <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
+</section>
+
+    </article>
+
+<article class="post">
+    <div >
         <a href="2023/11/26/vozzvanie/"><h2>Воззвание</h2></a>
         <p>26 November 2023</p>
     </div>
@@ -199,16 +210,6 @@
     <div >
         <a href="2023/8/20/some-poems-of-great-creators/"><h2>Creations of great geniuses</h2></a>
         <p>20 August 2023</p>
-    </div>
-
-    
-
-    </article>
-
-<article class="post">
-    <div >
-        <a href="2023/8/16/skifskij-plan/"><h2>Scythian plan</h2></a>
-        <p>16 August 2023</p>
     </div>
 
     
@@ -248,7 +249,7 @@
         .catch(err => console.error(err));
     }
 
-    if(localStorage.getItem("COUNTERAPI",null) != null && (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
+    if(localStorage.getItem("COUNTERAPI",null) != null || (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
         changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
     }
     else fetchVisits() 

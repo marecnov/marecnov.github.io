@@ -230,7 +230,7 @@
 </section>
 
 <section class="about-me">
-    <h2 style="text-align: center;">Today viewers:</h2>
+    <h2 style="text-align: center;">Сегодня просмотров:</h2>
     <h2 style="text-align: center;" id="countViews">0</h2>
 
     <script>
@@ -247,7 +247,7 @@
         .catch(err => console.error(err));
     }
 
-    if(localStorage.getItem("COUNTERAPI",null) != null && (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
+    if(localStorage.getItem("COUNTERAPI",null) != null || (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
         changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
     }
     else fetchVisits() 
