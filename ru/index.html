@@ -246,11 +246,9 @@
         })
         .catch(err => console.error(err));
     }
-
-    if(localStorage.getItem("COUNTERAPI",null) != null || (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<1){
-        changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
-    }
-    else fetchVisits() 
+   if(localStorage.getItem("COUNTERAPI",null) == null || (localStorage.getItem("COUNTERAPI",null) != null &&
+ (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)>=1)) fetchVisits() 
+    else changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
     </script>
 </section>
 
