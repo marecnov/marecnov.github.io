@@ -238,7 +238,7 @@
 
     <script>
     let changeCounter = (temp) => {
-        document.querySelector("#countViews").innerText = temp==='number'? temp : 0
+        document.querySelector("#countViews").innerText = typeof temp ==='number' ? temp : 0
     }
     const fetchVisits = ()=>{
         fetch('https://counter-api.marekivanov.repl.co/', {method: 'GET'})
