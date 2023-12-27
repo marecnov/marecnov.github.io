@@ -113,6 +113,7 @@
 </header>
 <main>
 <div class="layout">
+
     <div class="about-me">
     
         <div class='openCloser'>
@@ -158,9 +159,20 @@
     receiveOrUse()
     </script>
 
-    <section class="post-and-pagination">
-        <section class="posts">
+
+<section class="post-and-pagination">
+    <section class="posts">
         
+<article class="post">
+    <div >
+        <a href="../../2023/8/16/skifskij-plan/"><h2>Скифский план</h2></a>
+        <p>16 августа 2023</p>
+    </div>
+
+    
+
+    </article>
+
 <article class="post">
     <div >
         <a href="../../2023/7/21/what-purpose-does-my-blog-serve/"><h2>Какой целе служит этот блог?</h2></a>
@@ -179,18 +191,6 @@
     </div>
 
     <section><p>Название говорит само за себя.</p>
-</section>
-
-    </article>
-
-<article class="post">
-    <div >
-        <a href="../../2023/7/11/games-that-took-my-heart/"><h2>Игры, которые смогли занять место в моем сердце</h2></a>
-        <p>11 июля 2023</p>
-    </div>
-
-    <section><p>У каждого есть те самые любимые игры, в которые вы играли в детстве.</p>
-<p>А вот тут мои...</p>
 </section>
 
     </article>
@@ -217,7 +217,7 @@
 
     </article>
 
-</section>
+    </section>
 
 
   <div class="pagination">
@@ -230,6 +230,31 @@
   </div>
 
 
+</section>
+
+<section class="about-me">
+    <h2>Today viewers:</h2>
+    <h2 style="text-align: center;" id="countViews">0</h2>
+
+    <script>
+    let changeCounter = (temp) => {
+        document.querySelector("#countViews").innerText = temp
+    }
+    const fetchVisits = ()=>{
+        fetch('https://counter-api.marekivanov.repl.co/', {method: 'GET'})
+        .then(response => response.json())
+        .then(response => {
+        changeCounter(response.value)
+        localStorage.setItem("COUNTERAPI",JSON.stringify({"value":response.value,"lastChecked":new Date()}))
+        })
+        .catch(err => console.error(err));
+    }
+
+    if(localStorage.getItem("COUNTERAPI",null) != null && (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<5){
+        changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
+    }
+    else fetchVisits() 
+    </script>
 </section>
 
 </div>

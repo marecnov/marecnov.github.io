@@ -113,6 +113,7 @@
 </header>
 <main>
 <div class="layout">
+
     <div class="about-me">
     
         <div class='openCloser'>
@@ -158,9 +159,21 @@
     receiveOrUse()
     </script>
 
-    <section class="post-and-pagination">
-        <section class="posts">
+
+<section class="post-and-pagination">
+    <section class="posts">
         
+<article class="post">
+    <div >
+        <a href="2023/12/27/odarenie/"><h2>Одарение</h2></a>
+        <p>27 декабря 2023</p>
+    </div>
+
+    <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
+</section>
+
+    </article>
+
 <article class="post">
     <div >
         <a href="2023/11/26/vozzvanie/"><h2>Воззвание</h2></a>
@@ -201,17 +214,7 @@
 
     </article>
 
-<article class="post">
-    <div >
-        <a href="2023/8/16/skifskij-plan/"><h2>Скифский план</h2></a>
-        <p>16 августа 2023</p>
-    </div>
-
-    
-
-    </article>
-
-</section>
+    </section>
 
 
   <div class="pagination">
@@ -224,6 +227,31 @@
   </div>
 
 
+</section>
+
+<section class="about-me">
+    <h2>Today viewers:</h2>
+    <h2 style="text-align: center;" id="countViews">0</h2>
+
+    <script>
+    let changeCounter = (temp) => {
+        document.querySelector("#countViews").innerText = temp
+    }
+    const fetchVisits = ()=>{
+        fetch('https://counter-api.marekivanov.repl.co/', {method: 'GET'})
+        .then(response => response.json())
+        .then(response => {
+        changeCounter(response.value)
+        localStorage.setItem("COUNTERAPI",JSON.stringify({"value":response.value,"lastChecked":new Date()}))
+        })
+        .catch(err => console.error(err));
+    }
+
+    if(localStorage.getItem("COUNTERAPI",null) != null && (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)<5){
+        changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI")).value)
+    }
+    else fetchVisits() 
+    </script>
 </section>
 
 </div>
