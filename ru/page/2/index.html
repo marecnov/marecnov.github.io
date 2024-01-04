@@ -230,31 +230,6 @@
 
 
 </section>
-
-<section class="about-me">
-    <p style="text-align: center;">Сегодня просмотров:</p>
-    <h2 style="text-align: center;" id="countViews">0</h2>
-
-    <script>
-    let changeCounter = (temp) => {
-       if( (JSON.parse(localStorage.getItem("COUNTERAPI",null))?.lastChecked)?.substring(0,10) != new Date().toISOString().substring(0,10)) temp = 0
-        document.querySelector("#countViews").innerText = typeof temp ==='number' ? temp : 0
-    }
-    const fetchVisits = ()=>{
-        fetch('https://counter-api.marekivanov.repl.co/', {method: 'GET'})
-        .then(response => response.json())
-        .then(response => {
-        localStorage.setItem("COUNTERAPI",JSON.stringify({"value":response.value,"lastChecked":new Date()}))
-        changeCounter(response.value)
-        })
-        .catch(err => console.error(err));
-    }
-    changeCounter(JSON.parse(localStorage.getItem("COUNTERAPI"))?.value)
-   if(localStorage.getItem("COUNTERAPI",null) == null || (localStorage.getItem("COUNTERAPI",null) != null && 
-   (new Date() - new Date(JSON.parse(localStorage.getItem("COUNTERAPI")).lastChecked))/(5*1000*60)>=1)) fetchVisits() 
-    </script>
-</section>
-
 </div>
 </main>
 </body>
