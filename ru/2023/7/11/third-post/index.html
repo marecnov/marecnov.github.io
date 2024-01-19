@@ -23,36 +23,27 @@
 <header><a href="../../../../" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
 
   <a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
-
   <div id="myModal" class="modal">
-
       <div class="modal-content">
         <div class="modal-header">
           <h2>Настройки</h2>
           <span class="close">&times;</span>
         </div>
-
         <div class="modal-body">
-
           <section><div><i class="fa fa-globe" aria-hidden="true"></i> Язык</div>
               <select>
                   <option value="en">Английский</option>
                   <option value="ru">Русский</option>
               </select>
           </section>
-
           <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Темный режим</div>
           <input type="checkbox">
           </section>
-          
         </div>
-    
         <div class="modal-footer">
           <button>Применить</button>
         </div>
-
       </div>
-    
   </div>
   <script>
       var modal = document.getElementById("myModal");
@@ -65,17 +56,14 @@
         modal.style.display = "block";
         receiveOrInventSettings()
       }
-      
       span.onclick = function() {
         modal.style.display = "none";
       }
-      
       window.onclick = function(event) {
         if (event.target == modal) {
           modal.style.display = "none";
         }
       }
-      
       applyBtn.onclick = function(){
           let str = `{"darkMode":"${inputs[1].checked?'dark':'light'}","lang":"${inputs[0].value}"}` 
           localStorage.setItem('SETTINGS',str)
@@ -107,14 +95,11 @@
               window.location.replace(window.location.origin + "/ru"+ window.location.pathname)
           }
   }
-
   receiveOrInventSettings()
   </script>
-
 </header>
 <main><div class="layout">
     <div class="about-me">
-    
         <div class='openCloser'>
             <p>Обо мне</p>
             <i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -123,7 +108,6 @@
             <img src="../../../../../static/avatar.jpg?h=ab5c279d">
             <h2>Марек Иванов</h2>
             <p>Живу жизнью, наслаждаюсь великим, создаю смыслы...</p>
-    
             <div class="contacts">
                 <div class="links">
                     <a href="mailto:marecnov@gmail.com"><i class="fa fa-envelope-o" ></i></a>
@@ -140,12 +124,10 @@
         localStorage.setItem("About-Me-Closed",localStorage.getItem("About-Me-Closed")=="false"? 'true':'false')
         receiveOrUse()
     }
-
     function receiveOrUse(){
         if(localStorage.getItem("About-Me-Closed")==null){
             localStorage.setItem("About-Me-Closed",'false')
         }
-
         if(localStorage.getItem('About-Me-Closed')=='false'){
             panel.style.maxHeight = 'unset'
             chevron.style.rotate = '90deg'
@@ -157,13 +139,11 @@
     }
     receiveOrUse()
     </script>
-<div class="posts" id="top">
-<article class="post">
+<div class="posts" id="top"><article class="post">
     <div class="title">
         <h2>Третий пост</h2>
         <p>11 июля 2023</p>
-    </div>
-<section><p>Привет, всем!</p>
+    </div><section><p>Привет, всем!</p>
 <p>Мне люди говорят, что время важно. Я бы вывел все к одной фразе - <strong><em>каждая секунда на счету</em></strong> из сериал The Bear ( Медведь ).</p>
 </section>
 
