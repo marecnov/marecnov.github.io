@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta property="og:url" content="https://marecnov.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marek Ivanov`s blog">
+<meta property="og:description" content="About me - about everyone">
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://marecnov.github.io/static/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="shortcut icon" href="../../static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="../../static/style.css?h=3d381ec3">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<title>Scythian plan</title>
+</head>
+<body>
+<header><a href="../../" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Language</div>
+              <select>
+                  <option value="en">English</option>
+                  <option value="ru">Russian</option>
+              </select>
+          </section>
+          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Dark mode</div>
+          <input type="checkbox">
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button>Apply</button>
+        </div>
+      </div>
+  </div>
+  <script>
+    var modal = document.getElementById("myModal")
+    var link = document.getElementById("settingsLink")
+    var span = document.querySelector(".modal-header .close")
+    let applyBtn = document.querySelector('.modal-footer button')
+    let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
+
+    link.onclick = function() {
+      modal.style.display = "block"
+      loadSettings()
+    }
+    span.onclick = function() {
+      modal.style.display = "none"
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none"
+      }
+    }
+    applyBtn.onclick = function(){
+      let settings = {
+        darkMode: inputs[1].checked ? 'dark' : 'light',
+        lang: inputs[0].value
+      }
+      localStorage.setItem('SETTINGS', JSON.stringify(settings))
+      loadSettings()
+      modal.style.display = "none"
+    }
+
+    function loadSettings(){
+      let defaultSettings = {
+        darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+        lang: window.location.pathname.startsWith('/ru') ? 'ru' : 'en'
+      }
+      let settings = localStorage.getItem('SETTINGS') ? JSON.parse(localStorage.getItem('SETTINGS')) : defaultSettings;
+      
+      inputs[0].value = settings.lang
+      inputs[1].checked = settings.darkMode == 'dark'
+
+      document.documentElement.classList.add(settings.darkMode);
+      document.documentElement.classList.remove(settings.darkMode == 'light' ? 'dark' : 'light')
+      
+      if (settings.lang != defaultSettings.lang) {
+        let newPath = settings.lang == 'ru' ? '/ru' + window.location.pathname + window.location.hash : window.location.pathname.substring(3) + window.location.hash;
+        window.location.replace(window.location.origin + newPath)
+      }
+  }
+  loadSettings()
+  </script>
+</header>    
+<main><div class="layout">
+<div class="about-me">
+    <div class='openCloser'>
+            <p>About me</p>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="panel">
+            <img src="../../static/avatar.jpg?h=ab5c279d">
+                <h2>Marek Ivanov</h2>
+            <p>I do live life, enjoy great things, create meaning...</p>
+            </div> 
+    </div>
+    <script>
+        let openCloser = document.querySelector('.openCloser')
+        let panel = document.querySelector('.panel')
+        let chevron = document.querySelector('.openCloser i')
+        
+        openCloser.onclick = () => {
+            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+            isClosed ? localStorage.removeItem("About-Me-Closed") : localStorage.setItem("About-Me-Closed", true)
+            updatePanelAndChevron()
+        }
+        function updatePanelAndChevron() {
+            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+            panel.style.maxHeight = isClosed ? '0' : 'unset'
+            chevron.style.rotate = isClosed ? "-90deg" : null
+        }
+        updatePanelAndChevron()
+    </script>
+
+<div class="posts" id="top">
+<article class="post">
+    <div class="title">
+    <h2>Scythian plan</h2>
+    <p>16 August 2023</p>
+    </div>
+    <section><h2>Do not find people with intelligence in a society where the expression of personal opinion is oppressed, in fact,  is prohibited.</h2>
+<p>And what is left to look for people who at least somehow strive for enlightenment, for a high knowledge of new truths. For them, it is a pity to say this, there will be no place in such a public consciousness. It would be more correct to say: its absence.</p>
+<p>Quote by Dmitry Pavlovich Runich: "... the Russian peasant ... lives only to satisfy his physical needs and in order to enjoy the freedom that he seeks in <strong>vegetable</strong> (emphasis added by me - M.I.) life."</p>
+<p>The content that I consume that pours from everywhere is a nightmare. There are no people left, only primates, cattle, cotton wool, a herd of cows goes to an empty well for water.</p>
+<p>Is it really on this that we, people, will leave our development, really ...</p>
+<p>NO, life must be lived <em>Life</em> in order to carry oneself to the Society, to have high manners and to be mentally developed. And for this you can’t stay in a robe ... YOU have rights, you are People ...</p>
+<p>- It is useless to shout, they will not hear.</p>
+<p>And the last thing: Do not live <em>Death</em>, live with all your courage, consume the Best.</p>
+</section>
+    </article>
+
+</div>
+<div class="post-list">
+        <h3>Recent Posts</h3>
+        <a href="../../2024/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="../../2024/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="../odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="../vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="../repetition-in-chess-which-blows-your-mind/" ><b>Repetition in chess which blows your mind</b> <small>19&nbsp;November&nbsp;2023</small></a><a href="../dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="../some-poems-of-great-creators/" ><b>Creations of great geniuses</b> <small>20&nbsp;August&nbsp;2023</small></a><a href="./" class="current"><b>Scythian plan</b> <small>16&nbsp;August&nbsp;2023</small></a><a href="../what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="../new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a></div>
+
+</div></main>
+</body>
+</html>

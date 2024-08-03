@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta property="og:url" content="https://marecnov.github.io/ru">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Блог Марека Иванов">
+<meta property="og:description" content="Обо мне - о всех">
+<meta property="og:image" content="https://marecnov.github.io//static/previewRu.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="shortcut icon" href="../../../static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="../../../static/style.css?h=3d381ec3">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<title>Слова упали на лист бумаги</title>
+</head>
+<body>
+<header><a href="../../" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Настройки</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Язык</div>
+              <select>
+                  <option value="en">Английский</option>
+                  <option value="ru">Русский</option>
+              </select>
+          </section>
+          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Темный режим</div>
+          <input type="checkbox">
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button>Применить</button>
+        </div>
+      </div>
+  </div>
+  <script>
+    var modal = document.getElementById("myModal")
+    var link = document.getElementById("settingsLink")
+    var span = document.querySelector(".modal-header .close")
+    let applyBtn = document.querySelector('.modal-footer button')
+    let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
+
+    link.onclick = function() {
+      modal.style.display = "block"
+      loadSettings()
+    }
+    span.onclick = function() {
+      modal.style.display = "none"
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none"
+      }
+    }
+    applyBtn.onclick = function(){
+      let settings = {
+        darkMode: inputs[1].checked ? 'dark' : 'light',
+        lang: inputs[0].value
+      }
+      localStorage.setItem('SETTINGS', JSON.stringify(settings))
+      loadSettings()
+      modal.style.display = "none"
+    }
+
+    function loadSettings(){
+      let defaultSettings = {
+        darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+        lang: window.location.pathname.startsWith('/ru') ? 'ru' : 'en'
+      }
+      let settings = localStorage.getItem('SETTINGS') ? JSON.parse(localStorage.getItem('SETTINGS')) : defaultSettings;
+      
+      inputs[0].value = settings.lang
+      inputs[1].checked = settings.darkMode == 'dark'
+
+      document.documentElement.classList.add(settings.darkMode);
+      document.documentElement.classList.remove(settings.darkMode == 'light' ? 'dark' : 'light')
+      
+      if (settings.lang != defaultSettings.lang) {
+        let newPath = settings.lang == 'ru' ? '/ru' + window.location.pathname + window.location.hash : window.location.pathname.substring(3) + window.location.hash;
+        window.location.replace(window.location.origin + newPath)
+      }
+  }
+  loadSettings()
+  </script>
+</header>    
+<main><div class="layout">
+<div class="about-me">
+    <div class='openCloser'>
+            <p>Обо мне</p>
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </div>
+        <div class="panel">
+            <img src="../../../static/avatar.jpg?h=ab5c279d">
+            <h2>Марек Иванов</h2>
+            <p>Живу жизнью, наслаждаюсь великим, создаю смыслы...</p>
+            </div> 
+    </div>
+    <script>
+        let openCloser = document.querySelector('.openCloser')
+        let panel = document.querySelector('.panel')
+        let chevron = document.querySelector('.openCloser i')
+        
+        openCloser.onclick = () => {
+            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+            isClosed ? localStorage.removeItem("About-Me-Closed") : localStorage.setItem("About-Me-Closed", true)
+            updatePanelAndChevron()
+        }
+        function updatePanelAndChevron() {
+            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+            panel.style.maxHeight = isClosed ? '0' : 'unset'
+            chevron.style.rotate = isClosed ? "-90deg" : null
+        }
+        updatePanelAndChevron()
+    </script>
+
+<div class="posts" id="top">
+<article class="post">
+    <div class="title">
+    <h2>Слова упали на лист бумаги</h2>
+    <p>2 января 2024</p>
+    </div>
+    <section>
+<img src="../../../2024/vivamus-cras/gustav-kurbe-masterskaia-khudozhnika.jpg" width="100%" style="margin: 0 auto;display: block;max-height:60vh;max-width:100%;object-fit: contain;" alt="">
+</section>
+
+<section><p>Gustave Courbet <a href="https://fr.wikipedia.org/wiki/L%27Atelier_du_peintre"><em>L'Atelier du peintre</em></a> 1855.</p>
+<hr>
+</section>
+
+<section><p><em>Ты та, что я чувствую.</em></p>
+<p>Трепет, волнение - буря, печаль.<br>
+Рождение чуда, моя ты скрижаль.<br>
+Готов я развергнуть, открыть те врата,<br>
+Которые жаждут они, но не я.</p>
+<p>Жил до тебя, как в Нарве зимой.<br>
+Ни людей, ни цветов. Лишь замок пустой.<br>
+Рыцари ходят под серостью дня<br>
+По белости снега, в грязи их душа...</p>
+<p>Смятение в растерянности,<br>
+Сомнение в раздумьях,<br>
+Томление смелости,<br>
+Без Мелеты разумность.</p>
+<p>Разорвано сердце в метели решений,<br>
+С неловкостью шаг... И взрыв побуждений,<br>
+Из черного фильма с белой фатой,<br>
+Ступаю я смело в путь за тобой.</p>
+<p>И небо, и звезды, цвет не сменив,<br>
+Открыли глаза... Снимай негатив!<br>
+Мгновенье прошло, а справлюсь ли я?<br>
+Сердцем открыт! Давай же сюда!</p>
+<p>Исполнив песню скрижали своею душой,<br>
+Готов я поднять тебя над своей головой!..<br>
+Любовь ведь приходит от смеха и плача,<br>
+И так же уходит, со мною ребячась.</p>
+<p>Мне дорога мысль о тебе счастливой,<br>
+И не исправить этого даже могилой.<br>
+Я как Курбе оставлю свою мастерскую,<br>
+И то мгновение долго-долго смакую.</p>
+<p>Ты краска ярче, которой нет,<br>
+Ты эмоций взлет, которых нет,<br>
+Наслаждаюсь красотой, которой нет,<br>
+Ты та, которой нет...</p>
+<p>2.01.24</p>
+</section>
+    </article>
+
+</div>
+<div class="post-list">
+        <h3>Последние Посты</h3>
+        <a href="../autocad-interpolation-plugin/" ><b>Plugin для интерполирования в программе AutoCAD</b> <small>2&nbsp;июля&nbsp;2024</small></a><a href="./" class="current"><b>Слова упали на лист бумаги</b> <small>2&nbsp;января&nbsp;2024</small></a><a href="../../2023/odarenie/" ><b>Одарение</b> <small>27&nbsp;декабря&nbsp;2023</small></a><a href="../../2023/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;ноября&nbsp;2023</small></a><a href="../../2023/repetition-in-chess-which-blows-your-mind/" ><b>Повторение в шахматах, которое изменило исход игры</b> <small>19&nbsp;ноября&nbsp;2023</small></a><a href="../../2023/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;сентября&nbsp;2023</small></a><a href="../../2023/some-poems-of-great-creators/" ><b>Творения великих гениев</b> <small>20&nbsp;августа&nbsp;2023</small></a><a href="../../2023/skifskij-plan/" ><b>Скифский план</b> <small>16&nbsp;августа&nbsp;2023</small></a><a href="../../2023/what-purpose-does-my-blog-serve/" ><b>Какой целе служит этот блог?</b> <small>21&nbsp;июля&nbsp;2023</small></a><a href="../../2023/new-legendary-favicon/" ><b>Новый легендарная иконка и еще многое</b> <small>12&nbsp;июля&nbsp;2023</small></a></div>
+
+</div></main>
+</body>
+</html>
