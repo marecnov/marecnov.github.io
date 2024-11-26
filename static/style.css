@@ -325,4 +325,7 @@ div.posts{
     .layout{
         row-gap: .5em;
     }
+    div.about-me{
+        display: none;
+    }
 }
