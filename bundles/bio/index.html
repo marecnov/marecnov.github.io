@@ -1,28 +1,4 @@
-<div class="about-me">
-    <div class='openCloser'>
-            <p>About me</p>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-        </div>
-        <div class="panel">
-            <img src="static/avatar.jpg?h=ab5c279d">
-                <h2>Marek Ivanov</h2>
-            <p>I do live life, enjoy great things, create meaning...</p>
-            </div> 
-    </div>
+<div class=about-me><div class=openCloser><p>About me</p><i aria-hidden=true class="fa fa-chevron-down"></i></div><div class=panel><img src="static/avatar.jpg?h=ab5c279d"><h2>Marek Ivanov</h2><p>I do live life, enjoy great things, create meaning...</div></div>
     <script>
-        let openCloser = document.querySelector('.openCloser')
-        let panel = document.querySelector('.panel')
-        let chevron = document.querySelector('.openCloser i')
-        
-        openCloser.onclick = () => {
-            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
-            isClosed ? localStorage.removeItem("About-Me-Closed") : localStorage.setItem("About-Me-Closed", true)
-            updatePanelAndChevron()
-        }
-        function updatePanelAndChevron() {
-            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
-            panel.style.maxHeight = isClosed ? '0' : 'unset'
-            chevron.style.rotate = isClosed ? "-90deg" : null
-        }
-        updatePanelAndChevron()
+let openCloser=document.querySelector(".openCloser"),panel=document.querySelector(".panel"),chevron=document.querySelector(".openCloser i");function updatePanelAndChevron(){let e="true"===localStorage.getItem("About-Me-Closed");panel.style.maxHeight=e?"0":"unset",chevron.style.rotate=e?"-90deg":null}openCloser.onclick=()=>{"true"===localStorage.getItem("About-Me-Closed")?localStorage.removeItem("About-Me-Closed"):localStorage.setItem("About-Me-Closed",!0),updatePanelAndChevron()},updatePanelAndChevron();
     </script>
