@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta property="og:url" content="https://marecnov.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marek Ivanov`s blog">
+<meta property="og:description" content="About me - about everyone">
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://marecnov.github.io/static/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="shortcut icon" href="/static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?h=cb7238f9">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<title>What purpose does my blog serve?</title>
+</head>
+<body>
+<header><a href="/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
+  <div id="myModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Settings</h2>
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Language</div>
+              <select>
+                  <option value="en">English</option>
+                  <option value="ru">Russian</option>
+              </select>
+          </section>
+          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Dark mode</div>
+          <input type="checkbox">
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button>Apply</button>
+        </div>
+      </div>
+  </div>
+  <script>
+    var modal = document.getElementById("myModal")
+    var link = document.getElementById("settingsLink")
+    var span = document.querySelector(".modal-header .close")
+    let applyBtn = document.querySelector('.modal-footer button')
+    let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
+
+    link.onclick = function() {
+      modal.style.display = "block"
+      loadSettings()
+    }
+    span.onclick = function() {
+      modal.style.display = "none"
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none"
+      }
+    }
+    applyBtn.onclick = function(){
+      let settings = {
+        darkMode: inputs[1].checked ? 'dark' : 'light',
+        lang: inputs[0].value
+      }
+      localStorage.setItem('SETTINGS', JSON.stringify(settings))
+      loadSettings()
+      modal.style.display = "none"
+    }
+
+    function loadSettings(){
+      let defaultSettings = {
+        darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+        lang: window.location.pathname.startsWith('/ru') ? 'ru' : 'en'
+      }
+      let settings = localStorage.getItem('SETTINGS') ? JSON.parse(localStorage.getItem('SETTINGS')) : defaultSettings;
+      
+      inputs[0].value = settings.lang
+      inputs[1].checked = settings.darkMode == 'dark'
+
+      document.documentElement.classList.add(settings.darkMode);
+      document.documentElement.classList.remove(settings.darkMode == 'light' ? 'dark' : 'light')
+      
+      if (settings.lang != defaultSettings.lang) {
+        let newPath = settings.lang == 'ru' ? '/ru' + window.location.pathname + window.location.hash : window.location.pathname.substring(3) + window.location.hash;
+        window.location.replace(window.location.origin + newPath)
+      }
+  }
+  loadSettings()
+  </script>
+</header>    
+<main><div class="layout">
+
+<div id="bioSocket"></div>
+
+<div class="posts" id="top">
+<article class="post">
+    <div class="title">
+    <h2>What purpose does my blog serve?</h2>
+    <p>21 July 2023</p>
+    </div>
+    <section><p><em>What you as a reader can <strong>expect</strong> to see on this site</em></p>
+</section>
+
+<section>
+<img src="/p/what-purpose-does-my-blog-serve/2.copy.png" width="100%" style="margin: 0 auto;display: block;max-height:60vh;max-width:100%;object-fit: contain;" alt="">
+</section>
+
+<section><p>This blog was conceived as a small experiment, during which I will try to get out of my comfort zone and do something unusual. The experiment came to an end, but the blog remained. So I began to wonder why do I need <em>such a popular</em> occupation in our time.</p>
+<p>The answer lies in my beliefs:</p>
+<h3><em>A person must develop mentally&nbsp;and&nbsp;physically.</em></h3>
+<p><em>After writing this phrase, I decided to write a separate post about my reasoning on this topic.</em></p>
+</section>
+
+<section><h2>What definitely will not be in this blog</h2>
+<p>If you are used to a clear structured pitch, you are not at the right place. It should be understood that each post is made only in order to pour out my thoughts <em>on paper</em>, and so that later I can enjoy the aesthetics of what was written.<br>
+You read a post on some topic and are waiting for similar ones, you blundered. Of course, it is impossible to write without repeating themes, but the conclusion comes into that the wait is not only long, but very long.</p>
+<h2>What definitely will be</h2>
+<ul>
+<li>Stories based on personal experience, about my way of developing myself as a persona.</li>
+<li>Lifehacks, notes and just storage of knowledge left under the heading and date.</li>
+</ul>
+<hr>
+<h3>Small summary</h3>
+<p>This blog is my creativity, here I will share my achievements with the world. It will <del>serve first of all for</del> not.</p>
+<p>All the best,<br>
+Marek I</p>
+</section>
+    </article>
+
+</div>
+<div class="post-list">
+        <h3>Recent Posts</h3>
+        <a href="/p/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" class="current"><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
+
+</div>
+<script>
+    function splitHTMLAndScript(text) {
+      const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
+      const script = text.match(scriptRegex)[1] || '';
+      const html = text.replace(scriptRegex, '').trim();
+      return {
+        html: html,
+        script: script
+      };
+  }
+    function fetchContent(elID, url) {
+      fetch(url,{method: "GET"})
+        .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          } 
+          return response.text();
+        })
+        .then(receivedText => {
+          let { html,script } = splitHTMLAndScript(receivedText)
+          localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
+          loadContent(elID);
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+          document.getElementById(elID).innerText = 'Error loading content';
+        });
+    }
+    function loadContent(elID){
+        const data = JSON.parse(localStorage.getItem(elID))
+        document.getElementById(elID).innerHTML = data?.html;
+        const script = document.createElement('script');
+        script.textContent = data?.script;
+        document.getElementById(elID).appendChild(script);
+    }
+    let bundleIds = {
+        "bioSocket": "https://marecnov.github.io/bundles/bio/",
+    }
+  
+    Object.keys(bundleIds).forEach(elID => {
+        if((localStorage.getItem(elID,null) != null)){
+            if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
+                fetchContent(elID, bundleIds[elID])
+            } else{
+                loadContent(elID)
+            }
+        } else{
+            fetchContent(elID, bundleIds[elID])
+        }
+    })
+  
+  </script></main>
+</body>
+</html>

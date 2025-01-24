@@ -12,8 +12,8 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:image" content="https://marecnov.github.io/static/preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="shortcut icon" href="static/favicon.svg?h=d93feae4" type="image/svg+xml">
-<link rel="stylesheet" href="static/style.css?h=cb7238f9">
+<link rel="shortcut icon" href="/static/favicon.svg?h=d93feae4" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css?h=cb7238f9">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
 <title>Marek Ivanov`s Blog</title>
 </head>
 <body>
-<header><a href="./" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<header><a href="/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
 <a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
   <div id="myModal" class="modal">
       <div class="modal-content">
@@ -97,41 +97,18 @@
 </header>    
 <main>
 <div class="layout">
-<div class="about-me">
-    <div class='openCloser'>
-            <p>About me</p>
-            <i class="fa fa-chevron-down" aria-hidden="true"></i>
-        </div>
-        <div class="panel">
-            <img src="static/avatar.jpg?h=ab5c279d">
-                <h2>Marek Ivanov</h2>
-            <p>I do live life, enjoy great things, create meaning...</p>
-            </div> 
-    </div>
-    <script>
-        let openCloser = document.querySelector('.openCloser')
-        let panel = document.querySelector('.panel')
-        let chevron = document.querySelector('.openCloser i')
-        
-        openCloser.onclick = () => {
-            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
-            isClosed ? localStorage.removeItem("About-Me-Closed") : localStorage.setItem("About-Me-Closed", true)
-            updatePanelAndChevron()
-        }
-        function updatePanelAndChevron() {
-            let isClosed = localStorage.getItem("About-Me-Closed") === "true"
-            panel.style.maxHeight = isClosed ? '0' : 'unset'
-            chevron.style.rotate = isClosed ? "-90deg" : null
-        }
-        updatePanelAndChevron()
-    </script>
+  <!-- first solution -->
+<!-- -->
+ 
+<!-- second solution -->
+<div id="bioSocket"></div>
 
 <section class="post-and-pagination">
     <section class="posts">
         <article class="post">
     <div>
     
-    <a href="2024/autocad-interpolation-plugin/"><h2>AutoCAD Interpolation plugin</h2></a>
+    <a href="/p/autocad-interpolation-plugin/"><h2>AutoCAD Interpolation plugin</h2></a>
     
     <p>2 July 2024</p>
     </div>
@@ -140,7 +117,7 @@
 <article class="post">
     <div>
     
-    <a href="2024/vivamus-cras/"><h2>Слова упали на лист бумаги</h2></a>
+    <a href="/p/vivamus-cras/"><h2>Слова упали на лист бумаги</h2></a>
     
     <p>2 January 2024</p>
     </div>
@@ -150,7 +127,7 @@
 <article class="post">
     <div>
     
-    <a href="2023/odarenie/"><h2>Одарение</h2></a>
+    <a href="/p/odarenie/"><h2>Одарение</h2></a>
     
     <p>27 December 2023</p>
     </div>
@@ -160,7 +137,7 @@
 <article class="post">
     <div>
     
-    <a href="2023/vozzvanie/"><h2>Воззвание</h2></a>
+    <a href="/p/vozzvanie/"><h2>Воззвание</h2></a>
     
     <p>26 November 2023</p>
     </div>
@@ -168,10 +145,62 @@
     </article>
 </section>
 <div class="pagination">
-    <a href="./" class="current">1</a><a href="page/2/" >2</a>
+    <a href="/" class="current">1</a><a href="/page/2/" >2</a>
     </div>
 </section>
 </div>
+<script>
+  function splitHTMLAndScript(text) {
+    const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
+    const script = text.match(scriptRegex)[1] || '';
+    const html = text.replace(scriptRegex, '').trim();
+    return {
+      html: html,
+      script: script
+    };
+}
+  function fetchContent(elID, url) {
+    fetch(url,{method: "GET"})
+      .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        } 
+        return response.text();
+      })
+      .then(receivedText => {
+        let { html,script } = splitHTMLAndScript(receivedText)
+        localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
+        loadContent(elID);
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+        document.getElementById(elID).innerText = 'Error loading content';
+      });
+  }
+  function loadContent(elID){
+      const data = JSON.parse(localStorage.getItem(elID))
+      document.getElementById(elID).innerHTML = data?.html;
+      const script = document.createElement('script');
+      script.textContent = data?.script;
+      document.getElementById(elID).appendChild(script);
+  }
+  let bundleIds = {
+      "bioSocket": "https://marecnov.github.io/bundles/bio/",
+  }
+
+  Object.keys(bundleIds).forEach(elID => {
+      if((localStorage.getItem(elID,null) != null)){
+          if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
+              fetchContent(elID, bundleIds[elID])
+          } else{
+              loadContent(elID)
+          }
+      } else{
+          fetchContent(elID, bundleIds[elID])
+      }
+  })
+
+</script>
 </main>
 </body>
 </html>

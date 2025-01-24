@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<title>Блог Марека Иванова</title>
+<title>Одарение</title>
 </head>
 <body>
 <header><a href="/ru/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
@@ -94,112 +94,82 @@
   loadSettings()
   </script>
 </header>    
-<main>
-<div class="layout">
-  <!-- first solution -->
-<!-- -->
- 
-<!-- second solution -->
+<main><div class="layout">
+
 <div id="bioRuSocket"></div>
 
-<section class="post-and-pagination">
-    <section class="posts">
-        <article class="post">
-    <div>
-    
-    <a href="/ru/p/autocad-interpolation-plugin/"><h2>Plugin для интерполирования в программе AutoCAD</h2></a>
-    
-    <p>2 июля 2024</p>
-    </div>
-    
-    </article>
+<div class="posts" id="top">
 <article class="post">
-    <div>
-    
-    <a href="/ru/p/vivamus-cras/"><h2>Слова упали на лист бумаги</h2></a>
-    
-    <p>2 января 2024</p>
-    </div>
-    <section><p>Предлагаю Вам насладиться образами некоторых моих чувств.</p>
-</section>
-    </article>
-<article class="post">
-    <div>
-    
-    <a href="/ru/p/odarenie/"><h2>Одарение</h2></a>
-    
+    <div class="title">
+    <h2>Одарение</h2>
     <p>27 декабря 2023</p>
     </div>
-    <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
+    <section>
+<img src="/p/odarenie/bird-and-bush.png" width="100%" style="margin: 0 auto;display: block;max-height:60vh;max-width:100%;object-fit: contain;" alt="bird and bush">
+</section>
+
+<section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю.</p>
+<p>Совершенно точно, природой мне было не дано достичь моей нынешней высоты. Природа просто не могла никак повлият на судьбу.</p>
 </section>
     </article>
-<article class="post">
-    <div>
-    
-    <a href="/ru/p/vozzvanie/"><h2>Воззвание</h2></a>
-    
-    <p>26 ноября 2023</p>
-    </div>
-    
-    </article>
-</section>
-<div class="pagination">
-    <a href="/ru/" class="current">1</a><a href="/ru/page/2/" >2</a>
-    </div>
-</section>
+
+</div>
+<div class="post-list">
+        <h3>Последние Посты</h3>
+        <a href="/ru/p/autocad-interpolation-plugin/" ><b>Plugin для интерполирования в программе AutoCAD</b> <small>2&nbsp;июля&nbsp;2024</small></a><a href="/ru/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;января&nbsp;2024</small></a><a href="/ru/p/odarenie/" class="current"><b>Одарение</b> <small>27&nbsp;декабря&nbsp;2023</small></a><a href="/ru/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;ноября&nbsp;2023</small></a><a href="/ru/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;сентября&nbsp;2023</small></a><a href="/ru/p/what-purpose-does-my-blog-serve/" ><b>Какой целе служит этот блог?</b> <small>21&nbsp;июля&nbsp;2023</small></a><a href="/ru/p/new-legendary-favicon/" ><b>Новый легендарная иконка и еще многое</b> <small>12&nbsp;июля&nbsp;2023</small></a><a href="/ru/p/first-post-for-blog/" ><b>Первый пост для блога</b> <small>9&nbsp;июля&nbsp;2023</small></a></div>
+
 </div>
 <script>
-  function splitHTMLAndScript(text) {
-    const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
-    const script = text.match(scriptRegex)[1] || '';
-    const html = text.replace(scriptRegex, '').trim();
-    return {
-      html: html,
-      script: script
-    };
-}
-  function fetchContent(elID, url) {
-    fetch(url,{method: "GET"})
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        } 
-        return response.text();
-      })
-      .then(receivedText => {
-        let { html,script } = splitHTMLAndScript(receivedText)
-        localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
-        loadContent(elID);
-      })
-      .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-        document.getElementById(elID).innerText = 'Error loading content';
-      });
+    function splitHTMLAndScript(text) {
+      const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
+      const script = text.match(scriptRegex)[1] || '';
+      const html = text.replace(scriptRegex, '').trim();
+      return {
+        html: html,
+        script: script
+      };
   }
-  function loadContent(elID){
-      const data = JSON.parse(localStorage.getItem(elID))
-      document.getElementById(elID).innerHTML = data?.html;
-      const script = document.createElement('script');
-      script.textContent = data?.script;
-      document.getElementById(elID).appendChild(script);
-  }
-  let bundleIds = {
-      "bioRuSocket": "https://marecnov.github.io/bundles/bioRu/",
-  }
-
-  Object.keys(bundleIds).forEach(elID => {
-      if((localStorage.getItem(elID,null) != null)){
-          if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
-              fetchContent(elID, bundleIds[elID])
-          } else{
-              loadContent(elID)
-          }
-      } else{
-          fetchContent(elID, bundleIds[elID])
-      }
-  })
-
-</script>
-</main>
+    function fetchContent(elID, url) {
+      fetch(url,{method: "GET"})
+        .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          } 
+          return response.text();
+        })
+        .then(receivedText => {
+          let { html,script } = splitHTMLAndScript(receivedText)
+          localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
+          loadContent(elID);
+        })
+        .catch(error => {
+          console.error('There has been a problem with your fetch operation:', error);
+          document.getElementById(elID).innerText = 'Error loading content';
+        });
+    }
+    function loadContent(elID){
+        const data = JSON.parse(localStorage.getItem(elID))
+        document.getElementById(elID).innerHTML = data?.html;
+        const script = document.createElement('script');
+        script.textContent = data?.script;
+        document.getElementById(elID).appendChild(script);
+    }
+    let bundleIds = {
+        "bioRuSocket": "https://marecnov.github.io/bundles/bioRu/",
+    }
+  
+    Object.keys(bundleIds).forEach(elID => {
+        if((localStorage.getItem(elID,null) != null)){
+            if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
+                fetchContent(elID, bundleIds[elID])
+            } else{
+                loadContent(elID)
+            }
+        } else{
+            fetchContent(elID, bundleIds[elID])
+        }
+    })
+  
+  </script></main>
 </body>
 </html>
