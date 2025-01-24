@@ -1,4 +1,4 @@
-<div class=about-me><div class=openCloser><p>About me</p><i aria-hidden=true class="fa fa-chevron-down"></i></div><div class=panel><img src="static/avatar.jpg?h=ab5c279d"><h2>Marek Ivanov</h2><p>I do live life, enjoy great things, create meaning...</div></div>
+<div class=about-me><div class=openCloser><p>About me</p><i aria-hidden=true class="fa fa-chevron-down"></i></div><div class=panel><img src="/static/avatar.jpg?h=ab5c279d"><h2>Marek Ivanov</h2><p>I do live life, enjoy great things, create meaning...</div></div>
     <script>
 let openCloser=document.querySelector(".openCloser"),panel=document.querySelector(".panel"),chevron=document.querySelector(".openCloser i");function updatePanelAndChevron(){let e="true"===localStorage.getItem("About-Me-Closed");panel.style.maxHeight=e?"0":"unset",chevron.style.rotate=e?"-90deg":null}openCloser.onclick=()=>{"true"===localStorage.getItem("About-Me-Closed")?localStorage.removeItem("About-Me-Closed"):localStorage.setItem("About-Me-Closed",!0),updatePanelAndChevron()},updatePanelAndChevron();
     </script>
