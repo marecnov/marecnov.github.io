@@ -45,67 +45,15 @@
         </div>
       </div>
   </div>
-  <script>
-    var modal = document.getElementById("myModal")
-    var link = document.getElementById("settingsLink")
-    var span = document.querySelector(".modal-header .close")
-    let applyBtn = document.querySelector('.modal-footer button')
-    let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
-
-    link.onclick = function() {
-      modal.style.display = "block"
-      loadSettings()
-    }
-    span.onclick = function() {
-      modal.style.display = "none"
-    }
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none"
-      }
-    }
-    applyBtn.onclick = function(){
-      let settings = {
-        darkMode: inputs[1].checked ? 'dark' : 'light',
-        lang: inputs[0].value
-      }
-      localStorage.setItem('SETTINGS', JSON.stringify(settings))
-      loadSettings()
-      modal.style.display = "none"
-    }
-
-    function loadSettings(){
-      let defaultSettings = {
-        darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-        lang: window.location.pathname.startsWith('/ru') ? 'ru' : 'en'
-      }
-      let settings = localStorage.getItem('SETTINGS') ? JSON.parse(localStorage.getItem('SETTINGS')) : defaultSettings;
-      
-      inputs[0].value = settings.lang
-      inputs[1].checked = settings.darkMode == 'dark'
-
-      document.documentElement.classList.add(settings.darkMode);
-      document.documentElement.classList.remove(settings.darkMode == 'light' ? 'dark' : 'light')
-      
-      if (settings.lang != defaultSettings.lang) {
-        let newPath = settings.lang == 'ru' ? '/ru' + window.location.pathname + window.location.hash : window.location.pathname.substring(3) + window.location.hash;
-        window.location.replace(window.location.origin + newPath)
-      }
-  }
-  loadSettings()
-  </script>
+  <script src="/static/settings.js?h=bc09f607"></script>
 </header>    
 <main><div class="layout">
 
 <div id="bioSocket"></div>
 
 <div class="posts" id="top">
-<article class="post">
-    <div class="title">
-    <h2>AutoCAD Interpolation plugin</h2>
-    <p>2 July 2024</p>
-    </div>
-    <h2>Contents</h2><section id="Contents"></section>
+      <article class="post">
+        <div class="title"><h2>AutoCAD Interpolation plugin</h2><p>2 July 2024</p></div><h2>Contents</h2><section id="Contents"></section>
 <script>
     document.addEventListener("DOMContentLoaded", update)
     function update(){
@@ -264,7 +212,7 @@ INTRS, *INTERPOLATIONSETUP
 <li>DivisionLineLength - 5</li>
 </ul>
 </section>
-    </article>
+      </article>
 
 </div>
 <div class="post-list">
@@ -272,57 +220,12 @@ INTRS, *INTERPOLATIONSETUP
         <a href="/p/autocad-interpolation-plugin/" class="current"><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
 
 </div>
-<script>
-    function splitHTMLAndScript(text) {
-      const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
-      const script = text.match(scriptRegex)[1] || '';
-      const html = text.replace(scriptRegex, '').trim();
-      return {
-        html: html,
-        script: script
-      };
+<script type="module">
+  import pumpContent from "/static/parser.js?h=f1a3b550"
+  let bundleIds = {
+    "bioSocket": "https://marecnov.github.io/bundles/bio/",
   }
-    function fetchContent(elID, url) {
-      fetch(url,{method: "GET"})
-        .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          } 
-          return response.text();
-        })
-        .then(receivedText => {
-          let { html,script } = splitHTMLAndScript(receivedText)
-          localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
-          loadContent(elID);
-        })
-        .catch(error => {
-          console.error('There has been a problem with your fetch operation:', error);
-          document.getElementById(elID).innerText = 'Error loading content';
-        });
-    }
-    function loadContent(elID){
-        const data = JSON.parse(localStorage.getItem(elID))
-        document.getElementById(elID).innerHTML = data?.html;
-        const script = document.createElement('script');
-        script.textContent = data?.script;
-        document.getElementById(elID).appendChild(script);
-    }
-    let bundleIds = {
-        "bioSocket": "https://marecnov.github.io/bundles/bio/",
-    }
-  
-    Object.keys(bundleIds).forEach(elID => {
-        if((localStorage.getItem(elID,null) != null)){
-            if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
-                fetchContent(elID, bundleIds[elID])
-            } else{
-                loadContent(elID)
-            }
-        } else{
-            fetchContent(elID, bundleIds[elID])
-        }
-    })
-  
-  </script></main>
+  pumpContent(bundleIds)
+</script></main>
 </body>
 </html>
