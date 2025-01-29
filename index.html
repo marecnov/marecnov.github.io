@@ -45,161 +45,38 @@
         </div>
       </div>
   </div>
-  <script>
-    var modal = document.getElementById("myModal")
-    var link = document.getElementById("settingsLink")
-    var span = document.querySelector(".modal-header .close")
-    let applyBtn = document.querySelector('.modal-footer button')
-    let inputs = [document.querySelector('.modal-body select'),document.querySelector('.modal-body input')]
-
-    link.onclick = function() {
-      modal.style.display = "block"
-      loadSettings()
-    }
-    span.onclick = function() {
-      modal.style.display = "none"
-    }
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none"
-      }
-    }
-    applyBtn.onclick = function(){
-      let settings = {
-        darkMode: inputs[1].checked ? 'dark' : 'light',
-        lang: inputs[0].value
-      }
-      localStorage.setItem('SETTINGS', JSON.stringify(settings))
-      loadSettings()
-      modal.style.display = "none"
-    }
-
-    function loadSettings(){
-      let defaultSettings = {
-        darkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
-        lang: window.location.pathname.startsWith('/ru') ? 'ru' : 'en'
-      }
-      let settings = localStorage.getItem('SETTINGS') ? JSON.parse(localStorage.getItem('SETTINGS')) : defaultSettings;
-      
-      inputs[0].value = settings.lang
-      inputs[1].checked = settings.darkMode == 'dark'
-
-      document.documentElement.classList.add(settings.darkMode);
-      document.documentElement.classList.remove(settings.darkMode == 'light' ? 'dark' : 'light')
-      
-      if (settings.lang != defaultSettings.lang) {
-        let newPath = settings.lang == 'ru' ? '/ru' + window.location.pathname + window.location.hash : window.location.pathname.substring(3) + window.location.hash;
-        window.location.replace(window.location.origin + newPath)
-      }
-  }
-  loadSettings()
-  </script>
+  <script src="/static/settings.js?h=bc09f607"></script>
 </header>    
 <main>
 <div class="layout">
-  <!-- first solution -->
 <!-- -->
- 
-<!-- second solution -->
 <div id="bioSocket"></div>
-
 <section class="post-and-pagination">
-    <section class="posts">
-        <article class="post">
-    <div>
-    
-    <a href="/p/autocad-interpolation-plugin/"><h2>AutoCAD Interpolation plugin</h2></a>
-    
-    <p>2 July 2024</p>
-    </div>
-    
-    </article>
-<article class="post">
-    <div>
-    
-    <a href="/p/vivamus-cras/"><h2>Слова упали на лист бумаги</h2></a>
-    
-    <p>2 January 2024</p>
-    </div>
-    <section><p>Предлагаю Вам насладиться образами некоторых моих чувств.</p>
+  <section class="posts">
+      <article class="post">
+        <div><a href="/p/autocad-interpolation-plugin/"><h2>AutoCAD Interpolation plugin</h2></a><p>2 July 2024</p></div>
+      </article>
+      <article class="post">
+        <div><a href="/p/vivamus-cras/"><h2>Слова упали на лист бумаги</h2></a><p>2 January 2024</p></div><section><p>Предлагаю Вам насладиться образами некоторых моих чувств.</p>
 </section>
-    </article>
-<article class="post">
-    <div>
-    
-    <a href="/p/odarenie/"><h2>Одарение</h2></a>
-    
-    <p>27 December 2023</p>
-    </div>
-    <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
+      </article>
+      <article class="post">
+        <div><a href="/p/odarenie/"><h2>Одарение</h2></a><p>27 December 2023</p></div><section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю...</p>
 </section>
-    </article>
-<article class="post">
-    <div>
-    
-    <a href="/p/vozzvanie/"><h2>Воззвание</h2></a>
-    
-    <p>26 November 2023</p>
-    </div>
-    
-    </article>
+      </article>
+      <article class="post">
+        <div><a href="/p/vozzvanie/"><h2>Воззвание</h2></a><p>26 November 2023</p></div>
+      </article>
 </section>
-<div class="pagination">
-    <a href="/" class="current">1</a><a href="/page/2/" >2</a>
-    </div>
+  <div class="pagination"><a href="/" class="current">1</a><a href="/page/2/" >2</a></div>
 </section>
 </div>
-<script>
-  function splitHTMLAndScript(text) {
-    const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
-    const script = text.match(scriptRegex)[1] || '';
-    const html = text.replace(scriptRegex, '').trim();
-    return {
-      html: html,
-      script: script
-    };
-}
-  function fetchContent(elID, url) {
-    fetch(url,{method: "GET"})
-      .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        } 
-        return response.text();
-      })
-      .then(receivedText => {
-        let { html,script } = splitHTMLAndScript(receivedText)
-        localStorage.setItem(elID,JSON.stringify({"html":html,"script": script,"timestamp":new Date()}))
-        loadContent(elID);
-      })
-      .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-        document.getElementById(elID).innerText = 'Error loading content';
-      });
-  }
-  function loadContent(elID){
-      const data = JSON.parse(localStorage.getItem(elID))
-      document.getElementById(elID).innerHTML = data?.html;
-      const script = document.createElement('script');
-      script.textContent = data?.script;
-      document.getElementById(elID).appendChild(script);
-  }
+<script type="module">
+  import pumpContent from "/static/parser.js?h=f1a3b550"
   let bundleIds = {
-      "bioSocket": "https://marecnov.github.io/bundles/bio/",
+    "bioSocket": "https://marecnov.github.io/bundles/bio/",
   }
-
-  Object.keys(bundleIds).forEach(elID => {
-      if((localStorage.getItem(elID,null) != null)){
-          if ((new Date() - new Date(JSON.parse(localStorage.getItem(elID)).timestamp))/(1000*60*60)>=24){
-              fetchContent(elID, bundleIds[elID])
-          } else{
-              loadContent(elID)
-          }
-      } else{
-          fetchContent(elID, bundleIds[elID])
-      }
-  })
-
+  pumpContent(bundleIds)
 </script>
 </main>
 </body>
