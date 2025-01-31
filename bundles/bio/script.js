@@ -1,0 +1,15 @@
+let openCloser = document.querySelector('.openCloser')
+let panel = document.querySelector('.panel')
+let chevron = document.querySelector('.openCloser i')
+
+openCloser.onclick = () => {
+    let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+    isClosed ? localStorage.removeItem("About-Me-Closed") : localStorage.setItem("About-Me-Closed", true)
+    updatePanelAndChevron()
+}
+function updatePanelAndChevron() {
+    let isClosed = localStorage.getItem("About-Me-Closed") === "true"
+    panel.style.maxHeight = isClosed ? '0' : 'unset'
+    chevron.style.rotate = isClosed ? "-90deg" : null
+}
+updatePanelAndChevron()
