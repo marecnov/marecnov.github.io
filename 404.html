@@ -24,10 +24,10 @@
 </div>
 <script>
     if(localStorage.getItem('SETTINGS',null)!=null){
-          let data = JSON.parse(localStorage.getItem('SETTINGS'))
-          document.documentElement.classList.add(data.darkMode)
-          document.documentElement.classList.remove(data.darkMode == 'light' ? 'dark' : 'light')
-        }
+        let data = JSON.parse(localStorage.getItem('SETTINGS'))
+        document.documentElement.classList.add(data.darkMode)
+        document.documentElement.classList.remove(data.darkMode == 'light' ? 'dark' : 'light')
+    }
 </script>
 </main>
 </body>
