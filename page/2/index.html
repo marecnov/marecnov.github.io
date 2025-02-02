@@ -22,34 +22,13 @@
 </head>
 <body>
 <header><a href="/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
-<a id="settingsLink" style="cursor: pointer;"><i class="fa fa-cog" aria-hidden="true"></i></a>
-  <div id="myModal" class="modal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2>Settings</h2>
-          <span class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-          <section><div><i class="fa fa-globe" aria-hidden="true"></i> Language</div>
-              <select>
-                  <option value="en">English</option>
-                  <option value="ru">Russian</option>
-              </select>
-          </section>
-          <section><div><i class="fa fa-moon-o" aria-hidden="true"></i> Dark mode</div>
-          <input type="checkbox">
-          </section>
-        </div>
-        <div class="modal-footer">
-          <button>Apply</button>
-        </div>
-      </div>
-  </div>
-  <script src="/static/settings.js?h=bc09f607"></script>
-</header>    
+<div id="settingsSocket"></div></header>   
+<script type="module">
+    import parser from "/parser.js"
+    parser("settingsSocket","https://marecnov.github.io/bundles/settings/")
+</script> 
 <main>
 <div class="layout">
-<!-- -->
 <div id="bioSocket"></div>
 <section class="post-and-pagination">
   <section class="posts">
@@ -73,11 +52,8 @@
 </section>
 </div>
 <script type="module">
-  import pumpContent from "/static/parser.js?h=f1a3b550"
-  let bundleIds = {
-    "bioSocket": "https://marecnov.github.io/bundles/bio/",
-  }
-  pumpContent(bundleIds)
+  import parser from "/parser.js"
+  parser("bioSocket","https://marecnov.github.io/bundles/bio/")
 </script>
 </main>
 </body>
