@@ -14,8 +14,8 @@ function digestion(text){
     res.html = text
     return res
 }
-const lang = (alter = 0) => window.location.pathname.startsWith('/ru') && !alter ? 'Ru' : ''
-const storageKey = (socketID,alter = 0) => socketID + lang(alter)
+const lang = () => window.location.pathname.startsWith('/ru') ? 'Ru' : ''
+const storageKey = (socketID) => socketID + lang()
 const getStorageItem = (socketID) => localStorage.getItem(storageKey(socketID)) ? JSON.parse(localStorage.getItem(storageKey(socketID))) : null
 function fetchContent(socketID, url) {
     fetch(url,{method: "GET"})
@@ -60,7 +60,7 @@ function parser(socketID,url){
         fetchContent(socketID, `${url}index${lang()}.html`);
     } else {
         loadContent(socketID);
-        localStorage.removeItem(storageKey(socketID,1))
+        // localStorage.removeItem(storageKey(socketID,1))
     }
 }
 
