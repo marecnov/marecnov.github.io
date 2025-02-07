@@ -85,8 +85,6 @@ main{
     margin: 0 auto 2em auto;
 }
 .about-me{
-    position: sticky;
-    top: 1em;
     width: min(640px,100%);
     max-width: 640px;
     border: var(--post-border);
