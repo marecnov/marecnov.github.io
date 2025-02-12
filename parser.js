@@ -14,9 +14,9 @@ function digestion(text){
     res.html = text
     return res
 }
-const lang = () => window.location.pathname.startsWith('/ru') ? 'Ru' : ''
-const storageKey = (socketID) => socketID + lang()
-const getStorageItem = (socketID) => localStorage.getItem(storageKey(socketID)) ? JSON.parse(localStorage.getItem(storageKey(socketID))) : null
+const lang = (alter = 0) => alter ? (window.location.pathname.startsWith("/ru") ? "" : "Ru") : (window.location.pathname.startsWith("/ru") ? "Ru" : "");
+const storageKey = (socketID, alter = 0) => socketID + lang(alter);
+const getStorageItem = (socketID, alter = 0) => localStorage.getItem(storageKey(socketID, alter)) ? JSON.parse(localStorage.getItem(storageKey(socketID,alter))) : null;
 function fetchContent(socketID, url) {
     fetch(url,{method: "GET"})
         .then(response => {
@@ -55,13 +55,12 @@ function parser(socketID,url){
     const storageData = getStorageItem(socketID);
     const shouldFetchContent = !storageData || 
         (Date.now() - new Date(storageData.timestamp)) >= 24 * 60 * 60 * 1000;
-   
-    if (shouldFetchContent) {
-        fetchContent(socketID, `${url}index${lang()}.html`);
-    } else {
-        loadContent(socketID);
-        // localStorage.removeItem(storageKey(socketID,1))
-    }
+    shouldFetchContent ? fetchContent(socketID, `${url}index${lang()}.html`) : loadContent(socketID);
+    
+    const alterStorageData = getStorageItem(socketID,1);
+    const shouldDeleteAlterContent = !alterStorageData || 
+        (Date.now() - new Date(alterStorageData.timestamp)) >= 24 * 60 * 60 * 1000;
+    shouldDeleteAlterContent ? localStorage.removeItem(storageKey(socketID,1)) : null;
 }
 
 export default parser
