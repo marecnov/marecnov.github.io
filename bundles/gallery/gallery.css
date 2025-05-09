@@ -1,0 +1,140 @@
+.gallery-overlay {
+    display: none;
+    user-select: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    overflow: auto;
+}
+.gallery-carousel {
+    display: flex;
+    height: calc(100% - 90px); /* Reduce height to account for thumbnails */
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.gallery-item {
+    max-width: 80%;
+    max-height: 80vh;
+    display: none;
+    position: relative;
+    overflow: visible;
+}
+
+.gallery-item.active {
+    display: block;
+}
+
+.gallery-item img {
+    display: inline-block;
+    width: auto;
+    height: 80vh;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: zoom-in;
+    will-change: transform;
+}
+
+.gallery-item.zoomed img {
+    cursor: move;
+}
+
+.gallery-item video {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 0;
+    width: 12%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.nav-arrow.left {
+    left: 0;
+}
+
+.nav-arrow.right {
+    right: 0;
+}
+
+.close-btn {
+    position: fixed;
+    padding: 20px 30px;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.thumbnails {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    scroll-behavior: smooth;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(0, 0, 0, 0.7);
+
+}
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    opacity: 0.6;
+    position: relative;
+    flex-shrink: 0; 
+    box-sizing: border-box; 
+    object-fit: cover; 
+}
+.thumbnail img {
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    display: block; 
+}
+.thumbnail.active {
+    opacity: 1;
+    border: 2px solid white;
+}
+.thumbnail.video {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    display: inline-block; /* Match img behavior in flex layout */
+    box-sizing: border-box;
+    overflow: hidden;/* Ensure div behaves like an image in the flex layout */
+}
+.thumbnail.video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    text-shadow: 0 0 5px black;
+    z-index: 1;
+    pointer-events: none; 
+}
