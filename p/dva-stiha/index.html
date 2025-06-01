@@ -12,39 +12,48 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:image" content="https://marecnov.github.io/static/preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="shortcut icon" href="/static/favicon.svg?h=d93feae4" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?h=31cdcf99">
+<link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/css/global.css">
+<link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/post-page.css">
+<link rel="stylesheet" href="/static/css/components/header.css">
+<link rel="stylesheet" href="/static/css/components/about-me.css">
+<link rel="stylesheet" href="/static/css/components/settings.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<title>Два стиха</title>
-<script>
+<title>Два стиха</title><script>
   (function() {
     const savedSettings = localStorage.getItem('SETTINGS');
-    let theme = 'light'; // Default theme
+    let theme = 'light';
     if (savedSettings) {
       const settings = JSON.parse(savedSettings);
-      theme = settings.darkMode || 'light';
+      theme = settings.darkMode;
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       theme = 'dark';
     }
     document.documentElement.classList.add(theme);
   })();
-</script>
-</head>
+</script></head>
 <body>
-<header><a href="/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<header><a href="/" class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
 <div id="settingsSocket"></div></header>   
 <script type="module">
     import parser from "/parser.js"
     import t from "/bundles/settings/index.js"
     parser("settingsSocket",{html:t,scripts:["settings/script.js"]});
 </script>
-<main><div class="layout">
-<div id="bioSocket"></div>
+<main>
+<div id="bioSocket"></div>   
 
-<div class="posts" id="top">
+<script type="module">
+  import parser from "/parser.js"
+  import bioHtml from "/bundles/bio/index.js"
+  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
+</script>
+<section id="mainContent">
       <article class="post">
         <div class="title"><h2>Два стиха</h2><p>13 September 2023</p></div><section><p><em>Recuso infirmitatem</em></p>
 <p>Хочу любить, хочу расстаться,<br>
@@ -80,7 +89,6 @@ A песни всё те же - ночной маскарад.<br>
 Ни зла, ни доброго молчания.</p>
 <p>07.12.2022</p>
 </section>
-
 <section><hr>
 <p><em>Nec mens nec cor</em></p>
 <p>Да что за боль в груди такая, как будто старые часы.<br>
@@ -133,17 +141,10 @@ A песни всё те же - ночной маскарад.<br>
 <p>9.09.2023</p>
 </section>
       </article>
-
-</div>
+</section>
 <div class="post-list">
         <h3>Recent Posts</h3>
         <a href="/p/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" class="current"><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
-
-</div>
-<script type="module">
-  import parser from "/parser.js"
-  import bioHtml from "/bundles/bio/index.js"
-  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
-</script></main>
+</main>
 </body>
 </html>

@@ -1,0 +1,33 @@
+#bioSocket{
+    position: sticky;
+    top: 1em;
+}
+.about-me {
+    width: min(276px, 100%);
+    border: var(--post-border);
+    background: var(--post-background-color);
+    padding: 0.625rem;
+    margin: 0 auto;
+}
+
+.about-me p, .about-me h2 {
+    padding: 0 1.25rem;
+}
+
+.about-me img {
+    border: var(--post-border);
+    width: 100%;
+}
+
+.about-me .openCloser {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1em;
+}
+
+.about-me .panel {
+    max-height: unset;
+    overflow: hidden;
+}

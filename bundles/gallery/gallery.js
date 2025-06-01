@@ -44,9 +44,6 @@ function createThumbnail(src,isVideo = false,oid){
             if( oid == 0) document.querySelector(".media-item.main").src = startingUrl + "media/" + src
             else{
                 document.querySelector(`.media-item.shadow${oid}`).style.backgroundImage = `url("${startingUrl}media/${src}")`
-                document.querySelector(`.media-item.shadow${oid}`).style.backgroundSize = "cover"
-                document.querySelector(`.media-item.shadow${oid}`).style.backgroundPosition = "center"
-                document.querySelector(`.media-item.shadow${oid}`).style.backgroundRepeat = "no-repeat"
             }
         }
     }

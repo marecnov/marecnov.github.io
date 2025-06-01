@@ -1,0 +1,24 @@
+#pagination {
+    grid-area: 2/2;
+    width: min(640px, 100%);
+    margin: 1.5em auto;
+    font-size: 1.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+#pagination a {
+    padding: 0.3125rem 0.625rem;
+    border-radius: 4px;
+    color: var(--main-text-color);
+}
+#pagination a.current {
+    color: #fff;
+    background-color: var(--base-color);
+    pointer-events: none;
+}
+#pagination a:hover {
+    color: var(--main-color);
+}
