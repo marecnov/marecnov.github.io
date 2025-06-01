@@ -12,8 +12,15 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:image" content="https://marecnov.github.io/static/preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="shortcut icon" href="/static/favicon.svg?h=d93feae4" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?h=31cdcf99">
+<link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/css/global.css">
+<link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/post-page.css">
+<link rel="stylesheet" href="/static/css/components/header.css">
+<link rel="stylesheet" href="/static/css/components/about-me.css">
+<link rel="stylesheet" href="/static/css/components/settings.css">
+<link rel="stylesheet" href="/static/css/components/pagination.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,10 +49,13 @@
     parser("settingsSocket",{html:t,scripts:["settings/script.js"]});
 </script>
 <main>
-<div class="layout">
 <div id="bioSocket"></div>
-<section class="post-and-pagination">
-  <section class="posts">
+ <script type="module">
+  import parser from "/parser.js"
+  import bioHtml from "/bundles/bio/index.js"
+  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
+</script>
+  <section id="mainContent">
       <article class="post">
         <div><a href="/p/dva-stiha/"><h2>Два стиха</h2></a><p>13 September 2023</p></div>
       </article>
@@ -63,13 +73,6 @@
       </article>
 </section>
   <div class="pagination"><a href="/" >1</a><a href="/page/2/" class="current">2</a></div>
-</section>
-</div>
-<script type="module">
-  import parser from "/parser.js"
-  import bioHtml from "/bundles/bio/index.js"
-  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
-</script>
 </main>
 </body>
 </html>
