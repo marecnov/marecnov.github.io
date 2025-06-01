@@ -12,39 +12,47 @@
 <meta property="og:locale" content="en_US" />
 <meta property="og:image" content="https://marecnov.github.io/static/preview.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="shortcut icon" href="/static/favicon.svg?h=d93feae4" type="image/svg+xml">
-<link rel="stylesheet" href="/static/style.css?h=31cdcf99">
+<link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/css/global.css">
+<link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/post-page.css">
+<link rel="stylesheet" href="/static/css/components/header.css">
+<link rel="stylesheet" href="/static/css/components/about-me.css">
+<link rel="stylesheet" href="/static/css/components/settings.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<title>AutoCAD Interpolation plugin</title>
-<script>
+<title>AutoCAD Interpolation plugin</title><script>
   (function() {
     const savedSettings = localStorage.getItem('SETTINGS');
-    let theme = 'light'; // Default theme
+    let theme = 'light';
     if (savedSettings) {
       const settings = JSON.parse(savedSettings);
-      theme = settings.darkMode || 'light';
+      theme = settings.darkMode;
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
       theme = 'dark';
     }
     document.documentElement.classList.add(theme);
   })();
-</script>
-</head>
+</script></head>
 <body>
-<header><a href="/" class="blog-author"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<header><a href="/" class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
 <div id="settingsSocket"></div></header>   
 <script type="module">
     import parser from "/parser.js"
     import t from "/bundles/settings/index.js"
     parser("settingsSocket",{html:t,scripts:["settings/script.js"]});
 </script>
-<main><div class="layout">
-<div id="bioSocket"></div>
-
-<div class="posts" id="top">
+<main>
+<div id="bioSocket"></div>   
+<script type="module">
+  import parser from "/parser.js"
+  import bioHtml from "/bundles/bio/index.js"
+  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
+</script>
+<section id="mainContent">
       <article class="post">
         <div class="title"><h2>AutoCAD Interpolation plugin</h2><p>2 July 2024</p></div><h2>Contents</h2><section id="Contents"></section>
 <script>
@@ -62,63 +70,45 @@
         }
     }
 </script>
-
 <section><hr>
-
 <p>It's been a long time since the last time I wrote on my blog, but now the desire has come, and an interesting topic has appeared that will be useful for many AutoCAD users.<br>
 During my studying at TalTech, I was given the task of performing interpolation for a certain number of points with their location coordinates. Of course, it was possible to do without using my programming knowledge, but I would not be myself if I had not written the code to perform this task, and there were plenty of points.</p>
 </section>
-
 <a class="anchor" id="writingPath">How the program was written</a>
 <section><h2>Way of writing. Nothing is done just like that</h2>
 </section>
-<a href="#top">To contents</a>
-
-
+<a href="#">To contents</a>
 <section><p>I’ll start from the very beginning: before the task described above appeared in front of me, I knew how to write in Python (the same Python lessons offered in TalTech shocked me with their stupidity, but more on that later) and javascript; In fact, I spent most of my time teaching children under 16 how to write websites, concentrating on the frontend.<br>
 Since my video card recently burned out, I was experiencing errors when installing AutoCAD, I went to the TalTech library in search of the possibility of using AutoCAD on the computers in the library. I found the computer, of course; but at the beginning there was still no access to AutoCAD, but the university support worked perfectly, promptly responding and suggesting what to do, and added AutoCAD to the allowed programs.</p>
 </section>
-
 <section><p>While preparing for the annual CADrina design software competition, I became incredibly interested in all the capabilities of AutoCAD. After winning, I gained confidence that speed and accuracy are directly related to the program and the knowledge of the user.</p>
 </section>
-
 <section>
 <img src="/p/autocad-interpolation-plugin/cadrina.jpg" alt="my team">
 </section>
-
 <section><p><em>Special thanks to the team and my teacher for their efforts for our victory!</em></p>
 </section>
-
 <section><p>After the competition, I was faced with that same unbearably tedious task, and with confidence in my superiority and strength, I decided to make my life easier by writing a simple program. The idea was simple: the program would have to divide the segments between two points, taking into account the heights of these points.</p>
 </section>
-
 <section><p>Since I had limited time, I rushed to the library, and after 3 days I had a working program that did the necessary work at lightning speed. In total, I spent 23 hours understanding LISP, AutoLISP, and other concepts that were new to me.<br>
 Now I can share, for example, the interpolation function, which is not without flaws, but was in the original version.</p>
 </section>
-
 <section>
 <a href="/p/autocad-interpolation-plugin/code4.png" target="_blank">Initial code</a></section>
-
 <section><p>As you understand, this is not the end of the story, I decided to finalize my little program and pass it on to others. Therefore, yesterday, July 1, I decided to rewrite it to a clean version, adding settings and optimizing the algorithm.<br>
 In comparison, 39 lines of readable, optimized code could do the same thing as 80 lines of cluttered code.</p>
 </section>
-
 <section>
 <img src="/p/autocad-interpolation-plugin/code.png" alt="">
 </section>
-
 <section><p>Now I consider my work finished.</p>
 <hr></section>
-
 <a class="anchor" id="pluginUsage">Plugin usage</a>
 <section><h2>Plugin usage</h2>
 </section>
-<a href="#top">To contents</a>
-
-
+<a href="#">To contents</a>
 <section><p>To begin with, this plugin is a .fas file in which additional commands for interpolation are created.</p>
 </section>
-
 <section><p>This plugin adds only 4 commands to AutoCAD:</p>
 <ol>
 <li>INTERPOLATE</li>
@@ -127,31 +117,22 @@ In comparison, 39 lines of readable, optimized code could do the same thing as 8
 <li>INTERPOLATIONSETUP</li>
 </ol>
 </section>
-
 <a class="anchor" id="pluginDownload">Download the plugin</a>
 <section><p>You can download the plugin from this link:</p>
 </section>
-
-
 <section>
 <a href="/p/autocad-interpolation-plugin/Interpolation.fas" target="_blank">Interpolation program</a></section>
-
 <a class="anchor" id="pluginAppload">Appload the plugin</a>
 <section><h3>Appload the plugin</h3>
 </section>
-<a href="#top">To contents</a>
-
-
+<a href="#">To contents</a>
 <section><p>The plugin can be loaded into any project in AutoCAD using the <strong>APPLOAD</strong> command, while selecting the required file. After closing the project, you will need to download this plugin again.</p>
 <p><strong>Note</strong>: AutoCAD has the ability to automatically load this file when you open a new project. You can read about it <a href="https://help.autodesk.com/view/ACD/2024/ENU/?guid=GUID-49BC17B0-D6CC-4FD2-980F-184ACC9708E8#:~:text=History%20List%20tab.-,Startup%20Suite,-Specifies%20the%20custom">here</a>.</p>
 </section>
-
 <a class="anchor" id="shortcutAddition">Adding shortcuts for commands</a>
 <section><h3>Adding shortcuts for commands</h3>
 </section>
-<a href="#top">To contents</a>
-
-
+<a href="#">To contents</a>
 <section><p>In order to add abbreviations for commands, you need:</p>
 <p><strong>Windows</strong>:</p>
 <ol>
@@ -168,13 +149,10 @@ INTRS, *INTERPOLATIONSETUP
 <li>In the Reinitialize dialog box, select PGP File. Click OK.</li>
 </ol><p>Source: <a href="https://help.autodesk.com/view/ACDLT/2024/ENU/?guid=GUID-D4CACED6-DFBA-43C3-BC42-8D980AB3AE75">https://help.autodesk.com/</a></p>
 </section>
-
 <a class="anchor" id="commandsFunctionality">Commands functionality</a>
 <section><h3>Commands functionality</h3>
 </section>
-<a href="#top">To contents</a>
-
-
+<a href="#">To contents</a>
 <section><p>INTERPOLATE.</p>
 <p>To perform interpolation by points, you need:</p>
 <ol>
@@ -206,17 +184,10 @@ INTRS, *INTERPOLATIONSETUP
 </ul>
 </section>
       </article>
-
-</div>
+</section>
 <div class="post-list">
         <h3>Recent Posts</h3>
         <a href="/p/autocad-interpolation-plugin/" class="current"><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
-
-</div>
-<script type="module">
-  import parser from "/parser.js"
-  import bioHtml from "/bundles/bio/index.js"
-  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
-</script></main>
+</main>
 </body>
 </html>
