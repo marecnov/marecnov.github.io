@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+
+
+<url>
+  <loc>https://marecnov.github.io/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/autocad-interpolation-plugin/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/vivamus-cras/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/odarenie/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/vozzvanie/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/dva-stiha/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/what-purpose-does-my-blog-serve/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/new-legendary-favicon/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/first-post-for-blog/</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.50</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/raschet-i-konstruirovanie-monolitnyh.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/complete-ec2-algorithm-for-longitudinal-reinforcement-dimensioning-in-a-singly-doubly-reinforced-rectangular-section.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/complete-ec2-algorithm-for-shear-reinforcement-dimensioning-in-rectangular-beams.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/concrete-structures-i-eek5011.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0.75</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/concrete-structures-eek5011/concrete-structures-i-drawings.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0</priority>
+</url>
+<url>
+  <loc>https://marecnov.github.io/p/new-legendary-favicon/hello-world.pdf</loc>
+  <lastmod>2026-06-18T18:10:05+00:00</lastmod>
+  <priority>0</priority>
+</url>
+
+</urlset>
