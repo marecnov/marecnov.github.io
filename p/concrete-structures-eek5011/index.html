@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
+<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta property="og:url" content="https://marecnov.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marek Ivanov`s blog">
+<meta property="og:description" content="About me - about everyone">
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://marecnov.github.io/static/preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+
+<link rel="stylesheet" href="/static/css/global.css">
+<link rel="stylesheet" href="/static/css/variables.css">
+<link rel="stylesheet" href="/static/css/post-page.css">
+<link rel="stylesheet" href="/static/css/components/header.css">
+<link rel="stylesheet" href="/static/css/components/about-me.css">
+<link rel="stylesheet" href="/static/css/components/settings.css">
+<link rel="stylesheet" href="/static/css/responsive.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+<title>Concrete Structures EEK5011</title><script>
+  (function() {
+    const savedSettings = localStorage.getItem('SETTINGS');
+    let theme = 'light';
+    if (savedSettings) {
+      const settings = JSON.parse(savedSettings);
+      theme = settings.darkMode;
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      theme = 'dark';
+    }
+    document.documentElement.classList.add(theme);
+  })();
+</script></head>
+<body>
+<header><a href="/" class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="16" fill="#5C5CFF"/><path d="M1.85 15.9921L12.9 12.9L15.9921 1.85001L19.1 12.9L30.1343 15.9921L19.1 19.1L15.9921 30.1343L12.9 19.25L1.85 15.9921Z" fill="white"/></svg>marecnov</a>
+<div id="settingsSocket"></div></header>   
+<script type="module">
+    import parser from "/parser.js"
+    import t from "/bundles/settings/index.js"
+    parser("settingsSocket",{html:t,scripts:["settings/script.js"]});
+</script>
+<main>
+<div id="bioSocket"></div>   
+
+<script type="module">
+  import parser from "/parser.js"
+  import bioHtml from "/bundles/bio/index.js"
+  parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
+</script>
+
+<section id="mainContent">
+      <article class="post">
+        <div class="title"><h2>Concrete Structures EEK5011</h2><p>18 June 2026</p></div><section><p>I recently completed the course Concrete Structures I at TalTech, and I wanted to conclude this experience by writing this post. In it, I share my experiences, insights, and the results I achieved throughout the course. My goal is to provide useful information for future students who will take this course and to preserve a record of this journey for myself.
+I hope that what I have learned will be helpful to others and serve as a valuable reference for the next generation of students. With that said, let's begin the journey.</p>
+</section>
+
+<section><p><img src="/p/concrete-structures-eek5011/snippets3.jpeg" alt="V.Otsmaa Betoonkonstruktsioonide arvutamine">
+<em>My first meeting with THE book 04.10.26</em></p>
+</section>
+
+<h2>Contents</h2><section id="Contents"></section>
+<script>
+    document.addEventListener("DOMContentLoaded", update)
+    function update(){
+        let Contents = document.getElementById("Contents")
+        let anchors = document.querySelectorAll(".anchor")
+        for(anchor of anchors){
+            let aEl = document.createElement("a")
+            aEl.href = "#" + anchor.id
+            aEl.innerText = anchor.innerText
+            anchor.innerText = ""
+            Contents.appendChild(aEl)
+            Contents.appendChild(document.createElement("br"))
+        }
+    }
+</script>
+
+<a class="anchor" id="MyEsperienza">My Experience</a>
+<section><h3>My experience</h3>
+</section>
+<a href="#">To contents</a>
+
+
+<section><p>Before starting the course, I researched concrete design practices from around the world, studying ACI, Russian standards, and finally Eurocode 2 (EC2). I found many similarities across these codes, with differences mainly in details. At their core, they are all based on the same material properties and aim to deliver safe, practical solutions for engineers.</p>
+<p>After getting an overview of the project structure and basic requirements, I searched for similar worked examples and found an excellent resource: <a href="https://rep.bntu.by/bitstream/handle/data/5918/Raschet_i_konstruirovanie_monolitnyh.pdf">the Belarusian university guidebook</a> 
+or <a href="/p/concrete-structures-eek5011/raschet-i-konstruirovanie-monolitnyh.pdf">downloaded file</a>. This document provided valuable perspective and showed that our project was part of a broader, well-established design process. I highly recommend reviewing it.</p>
+</section>
+
+<section><p>Regarding the lectures [...], I would not recommend attending them. [...]</p>
+</section>
+
+<section><p>I strongly advise anyone taking this course to study Eurocode 2 and Eurocode 7 directly. Taking ownership of the theoretical calculations gives you much better control and understanding.
+<img src="/p/concrete-structures-eek5011/snippets1.jpeg" alt="V.Otsmaa vundament">
+<em>Snippet V. Otsmaa book. General methodology for foundation calculations</em></p>
+<p>Finally, I want to highlight V. Otsmaa’s book. It became my most valuable companion during the course. Although the mathematical structure can sometimes feel dense, it covers a wide range of topics in depth. I believe this work deserves much wider recognition. It is a shame that it is still not publicly available online. <em>I hope the Estonian academic community will take steps to digitize and share this important contribution with the world.</em></p>
+</section>
+
+<a class="anchor" id="whatLearned">Acquired knowledge</a>
+<section><h3>Acquired knowledge in short</h3>
+</section>
+<a href="#">To contents</a>
+
+
+<section><p>By completing this course, you gain a basic understanding of how concrete bearing strength is calculated according to Eurocode 2. However, the course should not be considered a comprehensive treatment of all the topics covered; it focuses primarily on the main concepts.</p>
+<p>In my opinion, the course mainly covered the design resistance calculations for bending moments (M<sub>Rd</sub>) and shear forces (V<sub>Rd</sub>). The axial force resistance (N<sub>Rd</sub>) was only briefly discussed, so I referred to the algorithm presented by our best teacher - the book. 
+<img src="/p/concrete-structures-eek5011/snippets2.jpeg" alt="V.Otsmaa N_Rd arvutamine">
+<em>Snippet from V.Otsmaa book. N<sub>Rd</sub> arvutamine</em></p>
+<p>I included a short section about N<sub>Rd</sub> in my project, but to properly credit the author and obtain a more detailed explanation, I recommend consulting the book directly.</p>
+</section>
+
+<a class="anchor" id="guide">Guidance</a>
+<section><h2>Guidance</h2>
+</section>
+<a href="#">To contents</a>
+
+
+<section><p>My good words for those, who is about to start working on this project. 
+Start early and focus on the basics first. I recommend reviewing my cheat sheets for M<sub>Rd</sub> and V<sub>Rd</sub> calculations.</p>
+<ul>
+<li><a href="/p/concrete-structures-eek5011/complete-ec2-algorithm-for-longitudinal-reinforcement-dimensioning-in-a-singly-doubly-reinforced-rectangular-section.pdf">M_Rd.pdf</a></li>
+<li><a href="/p/concrete-structures-eek5011/m-rd.ods">M_Rd.ods</a></li>
+<li><a href="/p/concrete-structures-eek5011/complete-ec2-algorithm-for-shear-reinforcement-dimensioning-in-rectangular-beams.pdf">V_Rd.pdf</a></li>
+<li><a href="/p/concrete-structures-eek5011/v-rd.ods">V_Rd.ods</a></li>
+</ul>
+<p>These documents provide a good foundation for understanding the required calculations and can help you begin writing your project more efficiently.</p>
+<p>I also suggest using <a href="/p/concrete-structures-eek5011/concrete-structures-i-eek5011.pdf">my project report</a> as a reference. I tried to clearly explain the basis of my calculations and conclusions so that the reasoning behind each step would be easy to follow. My goal was to make the material as understandable as possible for future students.</p>
+<p>Please note that I omitted some calculations, such as l<sub>eff</sub>, b<sub>eff</sub>, and l<sub>b,rqd</sub> , although these parameters are used in the main M<sub>Rd</sub> and V<sub>Rd</sub> calculations, they were excluded to keep the cheat sheets focused on the primary topics. Nevertheless, the report should help you understand how these values are applied and where they originate from.</p>
+<p>My second recommendation is to begin creating your drawings as soon as you complete each section of the project. This will help you organize your work and identify missing information early in the process.</p>
+<p>I have also included examples of drawings. However, these examples contain some mistakes and formatting issues, so I recommend using them with caution. If you are unsure about a particular detail, it is better not to rely on them as a template. <a href="/p/concrete-structures-eek5011/concrete-structures-i-drawings.pdf">Bad example</a></p>
+</section>
+      </article>
+
+</section>
+<div class="post-list">
+        <h3>Recent Posts</h3>
+        <a href="/p/concrete-structures-eek5011/" class="current"><b>Concrete Structures EEK5011</b> <small>18&nbsp;June&nbsp;2026</small></a><a href="/p/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
+</main>
+</body>
+</html>

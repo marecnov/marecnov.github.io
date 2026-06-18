@@ -13,6 +13,7 @@
 <meta property="og:image" content="https://marecnov.github.io/static/preview.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
+
 <link rel="stylesheet" href="/static/css/global.css">
 <link rel="stylesheet" href="/static/css/variables.css">
 <link rel="stylesheet" href="/static/css/post-page.css">
@@ -24,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
 <title>Одарение</title><script>
   (function() {
     const savedSettings = localStorage.getItem('SETTINGS');
@@ -47,20 +49,25 @@
 </script>
 <main>
 <div id="bioSocket"></div>   
+
 <script type="module">
   import parser from "/parser.js"
   import bioHtml from "/bundles/bio/index.js"
   parser("bioSocket",{html: bioHtml, scripts: ["bio/script.js",]})  
 </script>
+
 <section id="mainContent">
       <article class="post">
         <div class="title"><h2>Одарение</h2><p>27 December 2023</p></div>
+
 <div id="gallerySocket"></div>
 <script type="module">
   import parser from "/parser.js";
   import r from "/bundles/gallery/index.js";
   parser("gallerySocket",{html:r,css:["gallery/gallery-preview.css","gallery/gallery.css",],scripts:["gallery/thumb-scroll.js",]});
 </script>
+
+
 <script type="module">
 import{changeSrcs}from"/bundles/gallery/gallery.js";
  let strings = ['bird and bush.png', 'bird and bush_013.png'];
@@ -68,14 +75,16 @@ changeSrcs(
   strings,"/static/gallery"+window.location.pathname.split("/p")[1]);
 </script>
 </div>
+
 <section><p>Невероятно, насколько изменилась моя жизнь, как поменялись мысли, которые посещают меня. Я благодарен случаю.</p>
 <p>Совершенно точно, природой мне было не дано достичь моей нынешней высоты. Природа просто не могла никак повлият на судьбу.</p>
 </section>
       </article>
+
 </section>
 <div class="post-list">
         <h3>Recent Posts</h3>
-        <a href="/p/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" class="current"><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
+        <a href="/p/concrete-structures-eek5011/" ><b>Concrete Structures EEK5011</b> <small>18&nbsp;June&nbsp;2026</small></a><a href="/p/autocad-interpolation-plugin/" ><b>AutoCAD Interpolation plugin</b> <small>2&nbsp;July&nbsp;2024</small></a><a href="/p/vivamus-cras/" ><b>Слова упали на лист бумаги</b> <small>2&nbsp;January&nbsp;2024</small></a><a href="/p/odarenie/" class="current"><b>Одарение</b> <small>27&nbsp;December&nbsp;2023</small></a><a href="/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;November&nbsp;2023</small></a><a href="/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;September&nbsp;2023</small></a><a href="/p/what-purpose-does-my-blog-serve/" ><b>What purpose does my blog serve?</b> <small>21&nbsp;July&nbsp;2023</small></a><a href="/p/new-legendary-favicon/" ><b>New legendary favicon and more</b> <small>12&nbsp;July&nbsp;2023</small></a><a href="/p/first-post-for-blog/" ><b>First post for blog</b> <small>9&nbsp;July&nbsp;2023</small></a></div>
 </main>
 </body>
 </html>
