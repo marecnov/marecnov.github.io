@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="Marecnov, Marek Ivanov, Blog" />
-<meta name="description" content="Marek Ivanov`s Blog right here!" />
+<meta name="keywords" content="marecnov, Marek Ivanov" />
+<meta name="description" content="Marek Ivanov's personal blog — thoughts on life, engineering, programming, poetry and meaningful creation. Concrete Structures, AutoCAD plugins, and more." />
 <meta property="og:url" content="https://marecnov.github.io/ru">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Блог Марека Иванов">
-<meta property="og:description" content="Обо мне - о всех">
+<meta property="og:description" content="Личный блог Марека Иванова — размышления о жизни, инженерии, программировании, поэзии и осмысленном творчестве. Бетонные конструкции, плагины для AutoCAD и многое другое.">
 <meta property="og:image" content="https://marecnov.github.io//static/previewRu.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="shortcut icon" href="/static/favicon.svg" type="image/svg+xml">
@@ -57,11 +57,8 @@
 
 <section id="mainContent">
       <article class="post">
-        <div class="title"><h2>Слова упали на лист бумаги</h2><p>2 января 2024</p></div><section>
-<img src="/p/vivamus-cras/gustav-kurbe-masterskaia-khudozhnika.jpg" alt="">
-</section>
-
-<section><p>Gustave Courbet <a href="https://fr.wikipedia.org/wiki/L%27Atelier_du_peintre"><em>L'Atelier du peintre</em></a> 1855.</p>
+        <div class="title"><h2>Слова упали на лист бумаги</h2><p>2 января 2024</p></div><section><p><img src="/p/vivamus-cras/gustav-kurbe-masterskaia-khudozhnika.jpg" alt="Gustave Courbet L&#39;Atelier du peintre">
+Gustave Courbet <a href="https://fr.wikipedia.org/wiki/L%27Atelier_du_peintre"><em>L'Atelier du peintre</em></a> 1855.</p>
 <hr>
 </section>
 
@@ -103,9 +100,11 @@
       </article>
 
 </section>
-<div class="post-list">
-        <h3>Последние Посты</h3>
-        <a href="/ru/p/concrete-structures-eek5011/" ><b>Concrete Structures EEK5011</b> <small>18&nbsp;июня&nbsp;2026</small></a><a href="/ru/p/autocad-interpolation-plugin/" ><b>Plugin для интерполирования в программе AutoCAD</b> <small>2&nbsp;июля&nbsp;2024</small></a><a href="/ru/p/vivamus-cras/" class="current"><b>Слова упали на лист бумаги</b> <small>2&nbsp;января&nbsp;2024</small></a><a href="/ru/p/odarenie/" ><b>Одарение</b> <small>27&nbsp;декабря&nbsp;2023</small></a><a href="/ru/p/vozzvanie/" ><b>Воззвание</b> <small>26&nbsp;ноября&nbsp;2023</small></a><a href="/ru/p/dva-stiha/" ><b>Два стиха</b> <small>13&nbsp;сентября&nbsp;2023</small></a><a href="/ru/p/what-purpose-does-my-blog-serve/" ><b>Какой целе служит этот блог?</b> <small>21&nbsp;июля&nbsp;2023</small></a><a href="/ru/p/new-legendary-favicon/" ><b>Новый легендарная иконка и еще многое</b> <small>12&nbsp;июля&nbsp;2023</small></a><a href="/ru/p/first-post-for-blog/" ><b>Первый пост для блога</b> <small>9&nbsp;июля&nbsp;2023</small></a></div>
+    <div id="recentPosts"></div>
+    <script>
+!async function(){const e=document.getElementById("recentPosts"),t=location.pathname.startsWith("/ru"),n=t?"ru/":"";try{const r=await fetch("/"+n),o=new DOMParser().parseFromString(await r.text(),"text/html"),a=[];o.querySelectorAll("article.post").forEach(e=>{const t=e.querySelector("a[href]"),n=e.querySelector("h2");t&&n&&a.push({t:n.textContent.trim(),u:t.getAttribute("href"),d:e.querySelector("p")?e.querySelector("p").textContent.trim():""})});e.innerHTML=function(e,t,n=8){let r=`<h3>${t?"Последние Посты":"Recent Posts"}</h3>`;return e.slice(0,n).forEach(n=>{const o=location.pathname===n.u||location.pathname.endsWith(n.u);r+=`<a href="${n.u}" ${o?'class="current"':""}><b>${n.t}</b> <small>${n.d}</small></a>`}),r}(a,t)}catch(e){console.error(e)}}();
+</script>
+
 </main>
 </body>
 </html>
