@@ -18,18 +18,15 @@
     main{
         grid-template-columns: 1fr 0.4fr;
     }
-    .post-list{
+    #recentPosts{
         grid-area: 1/2;
     }
-    main:has(.post-list) #bioSocket{
+    main:has(#recentPosts) #bioSocket{
         display: none;
     }
-    main:not(:has(.post-list)) #bioSocket{
+    main:not(:has(#recentPosts)) #bioSocket{
         display: block;
         grid-area: 1/2;
-    }
-    #pagination{
-        grid-area: 2/1;
     }
 }
 @media(max-width: 768px) {
@@ -41,7 +38,7 @@
     .about-me{
         display: none;
     }
-    .post-list{
+    #recentPosts{
         display: none;
     }
 }  

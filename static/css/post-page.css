@@ -16,24 +16,24 @@ article.post {
 .post video {
     width: 100%;
 }
-/* post list */
-.post-list {
+/* recentPosts */
+#recentPosts {
     grid-area: 1/3;
     position: sticky;
     top: 1em;
 }
-
-.post-list a {
+#recentPosts a {
     color: var(--main-text-color);
     display: block;
     padding-block-end: 0.5em;
 }
-
-.post-list .current {
+#recentPosts small{
+    white-space: nowrap;
+}
+#recentPosts .current {
     color: var(--main-color);
     pointer-events: none;
 }
-
-.post-list a:hover {
+#recentPosts a:hover {
     color: var(--main-color);
 }
