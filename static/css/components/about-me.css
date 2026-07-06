@@ -13,10 +13,6 @@
     padding: 0 1.25rem;
 }
 
-.about-me img {
-    width: 100%;
-}
-
 .about-me .openCloser {
     cursor: pointer;
     display: flex;
