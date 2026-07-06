@@ -4,7 +4,6 @@
 }
 .about-me {
     width: min(276px, 100%);
-    border: var(--post-border);
     background: var(--post-background-color);
     padding: 0.625rem;
     margin: 0 auto;
@@ -12,11 +11,6 @@
 
 .about-me p, .about-me h2 {
     padding: 0 1.25rem;
-}
-
-.about-me img {
-    border: var(--post-border);
-    width: 100%;
 }
 
 .about-me .openCloser {

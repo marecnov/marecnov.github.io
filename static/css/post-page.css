@@ -1,5 +1,4 @@
 article.post {
-    border: var(--post-border);
     width: 100%;
     padding: 0.625rem 1.25rem;
     background-color: var(--post-background-color);
