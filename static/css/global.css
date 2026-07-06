@@ -39,7 +39,7 @@ a > h2:hover {
 ::selection {
     background-color: rgba(255, 255, 0, 0.3);
 }
-img:not(.media-preview img):not(.gallery-overlay img):not(.about-me img) {
+img:not(.media-preview img):not(.gallery-overlay img) {
     width: 100%;
     margin: 0 auto;
     max-height: 60vh;
