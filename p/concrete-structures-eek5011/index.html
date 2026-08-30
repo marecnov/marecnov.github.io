@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en_US">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,8 +94,15 @@
 </script>
 
 <section id="mainContent">
-      <article class="post">
-        <div class="title"><h2>Concrete Structures EEK5011</h2><p>18 June 2026</p></div><section><p>I recently completed the course Concrete Structures I at TalTech, and I wanted to conclude this experience by writing this post. In it, I share my experiences, insights, and the results I achieved throughout the course. My goal is to provide useful information for future students who will take this course and to preserve a record of this journey for myself.
+      
+
+<article class="post">
+        <div class="title">
+            
+            <h2>Concrete Structures EEK5011</h2>
+            <p> <i class="fa fa-calendar-o" aria-hidden="true"></i> 18 Jun 2026</p>
+            </div>
+        <section><p>I recently completed the course Concrete Structures I at TalTech, and I wanted to conclude this experience by writing this post. In it, I share my experiences, insights, and the results I achieved throughout the course. My goal is to provide useful information for future students who will take this course and to preserve a record of this journey for myself.
 I hope that what I have learned will be helpful to others and serve as a valuable reference for the next generation of students. With that said, let's begin the journey.</p>
 </section>
 
@@ -103,7 +110,8 @@ I hope that what I have learned will be helpful to others and serve as a valuabl
 <em>My first meeting with THE book 04.10.26</em></p>
 </section>
 
-<h2>Contents</h2><section id="Contents"></section>
+<h2>Contents</h2>
+<section id="Contents"></section>
 <script>
     document.addEventListener("DOMContentLoaded", update)
     function update(){
@@ -173,11 +181,13 @@ Start early and focus on the basics first. I recommend reviewing my cheat sheets
 <p>My second recommendation is to begin creating your drawings as soon as you complete each section of the project. This will help you organize your work and identify missing information early in the process.</p>
 <p>I have also included examples of drawings. However, these examples contain some mistakes and formatting issues, so I recommend using them with caution. If you are unsure about a particular detail, it is better not to rely on them as a template. <a href="/p/concrete-structures-eek5011/concrete-structures-i-drawings.pdf">Bad example</a></p>
 </section>
-      </article>
+        
+      </article> 
 
 </section>
+
     <div id="recentPosts"></div>
-    <script>
+<script>
 !async function(){const e=document.getElementById("recentPosts"),t=location.pathname.startsWith("/ru"),n=t?"ru/":"";try{const r=await fetch("/"+n),o=new DOMParser().parseFromString(await r.text(),"text/html"),a=[];o.querySelectorAll("article.post").forEach(e=>{const t=e.querySelector("a[href]"),n=e.querySelector("h2");t&&n&&a.push({t:n.textContent.trim(),u:t.getAttribute("href"),d:e.querySelector("p")?e.querySelector("p").textContent.trim():""})});e.innerHTML=function(e,t,n=8){let r=`<h3>${t?"Последние Посты":"Recent Posts"}</h3>`;return e.slice(0,n).forEach(n=>{const o=location.pathname===n.u||location.pathname.endsWith(n.u);r+=`<a href="${n.u}" ${o?'class="current"':""}><b>${n.t}</b> <small>${n.d}</small></a>`}),r}(a,t)}catch(e){console.error(e)}}();
 </script>
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en_US">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,8 +94,15 @@
 </script>
 
 <section id="mainContent">
-      <article class="post">
-        <div class="title"><h2>Одарение</h2><p>27 December 2023</p></div><section><p>Невероятно, насколько изменилась моя жизнь. Поменялись мысли, которые посещают меня, изменился взгляд на всё вокруг.</p>
+      
+
+<article class="post">
+        <div class="title">
+            
+            <h2>Одарение</h2>
+            <p> <i class="fa fa-calendar-o" aria-hidden="true"></i> 27 Dec 2023</p>
+            </div>
+        <section><p>Невероятно, насколько изменилась моя жизнь. Поменялись мысли, которые посещают меня, изменился взгляд на всё вокруг.</p>
 <p>Я благодарен случаю, что в какой-то момент остановился и решил не просто ждать, а сделать что-то. Не потому, что я был одарён, а потому, что я выбрал путь, который раньше даже не представлял себе. Я пошёл туда, где раньше не ходил - в мир зарисовок, где нет правильных или неправильных ответов, только процесс.</p>
 <p>Сегодня я делюсь своими сырыми зарисовками, своими первыми шагами. Не потому, что они идеальны, а потому, что они - мои. И каждый раз, когда я беру карандаш в руки, я чувствую, как внутри меня что-то начинает меняться. Как будто я впервые понимаю, кто я есть и куда хочу идти.</p>
 <p>Возможно, это и есть одарение - не то, что даётся, а то, что ты сам создаешь. И каждый раз, когда я рисую, я чувствую, как внутри меня звучит новый звук - тот, что говорит: «Ты можешь».</p>
@@ -118,11 +125,13 @@ changeSrcs(
   strings,"/static/gallery"+window.location.pathname.split("/p")[1]);
 </script>
 </div>
-      </article>
+        
+      </article> 
 
 </section>
+
     <div id="recentPosts"></div>
-    <script>
+<script>
 !async function(){const e=document.getElementById("recentPosts"),t=location.pathname.startsWith("/ru"),n=t?"ru/":"";try{const r=await fetch("/"+n),o=new DOMParser().parseFromString(await r.text(),"text/html"),a=[];o.querySelectorAll("article.post").forEach(e=>{const t=e.querySelector("a[href]"),n=e.querySelector("h2");t&&n&&a.push({t:n.textContent.trim(),u:t.getAttribute("href"),d:e.querySelector("p")?e.querySelector("p").textContent.trim():""})});e.innerHTML=function(e,t,n=8){let r=`<h3>${t?"Последние Посты":"Recent Posts"}</h3>`;return e.slice(0,n).forEach(n=>{const o=location.pathname===n.u||location.pathname.endsWith(n.u);r+=`<a href="${n.u}" ${o?'class="current"':""}><b>${n.t}</b> <small>${n.d}</small></a>`}),r}(a,t)}catch(e){console.error(e)}}();
 </script>
 
