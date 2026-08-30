@@ -1,4 +1,4 @@
-export default [`
+export default `
 <div class="media-preview">
 <div class="media-stack">
     <img src="" class="media-item main" alt="Preview">
@@ -18,5 +18,4 @@ export default [`
         <!-- thumbnails here -->
     </div>
 </div>
-`, false
-]
+`

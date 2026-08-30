@@ -1,35 +1,26 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en_US">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="keywords"
-            content="marecnov, Marek Ivanov"
-        />
-        <meta
-            name="description"
-            content="Marek Ivanov's personal blog — thoughts on life, engineering, programming, poetry and meaningful creation. Concrete Structures, AutoCAD plugins, and more."
-        />
-        <meta property="og:url" content="https://marecnov.github.io" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Marek Ivanov`s blog" />
-        <meta
-            property="og:description"
-            content="Marek Ivanov's personal blog — thoughts on life, engineering, programming, poetry and meaningful creation. Concrete Structures, AutoCAD plugins, and more."
-        />
-        <meta property="og:locale" content="en_US" />
-        <meta
-            property="og:image"
-            content="https://marecnov.github.io/static/preview.png"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <link
-            rel="shortcut icon"
-            href="/static/favicon.svg"
-            type="image/svg+xml"
-        />
-        
+<meta name="keywords" content="marecnov, Marek Ivanov"/>
+<meta name="description" content="Marek Ivanov's personal blog — thoughts on life, engineering, programming, poetry and meaningful creation. Concrete Structures, AutoCAD plugins, and more."/>
+<meta property="og:url" content="https://marecnov.github.io" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Marek Ivanov`s blog" />
+<meta
+    property="og:description"
+    content="Marek Ivanov's personal blog — thoughts on life, engineering, programming, poetry and meaningful creation. Concrete Structures, AutoCAD plugins, and more."/>
+<meta property="og:locale" content="en_US" />
+<meta
+    property="og:image"
+    content="https://marecnov.github.io/static/preview.png"/>
+<meta name="twitter:card" content="summary_large_image" />
+<link
+    rel="shortcut icon"
+    href="/static/favicon.svg"
+    type="image/svg+xml"/>
+
 <link rel="stylesheet" href="/static/css/global.css">
 <link rel="stylesheet" href="/static/css/variables.css">
 <link rel="stylesheet" href="/static/css/post-page.css">
@@ -42,49 +33,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
 
-        <title>AutoCAD Interpolation plugin</title><script>
-            (function () {
-                const savedSettings = localStorage.getItem("SETTINGS");
-                let theme = "light";
-                if (savedSettings) {
-                    const settings = JSON.parse(savedSettings);
-                    theme = settings.darkMode;
-                } else if (
-                    window.matchMedia("(prefers-color-scheme: dark)").matches
-                ) {
-                    theme = "dark";
-                }
-                document.documentElement.classList.add(theme);
-            })();
-        </script></head>
-    <body>
-        <header>
-            <a href="/" class="logo"
-                ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 64 64"
-                    fill="none"
-                >
-                    <circle cx="32" cy="32" r="32" fill="#5C5CFF" />
-                    <path
-                        d="M4 32L26 26L32 4L38 26L60 32L38 38L32 60L26 38L4 32Z"
-                        fill="white"
-                    /></svg
-                >marecnov</a
-            >
+<title>AutoCAD Interpolation plugin</title><script>
+    (function () {
+        const savedSettings = localStorage.getItem("SETTINGS");
+        let theme = "light";
+        if (savedSettings) {
+            const settings = JSON.parse(savedSettings);
+            theme = settings.darkMode;
+        } else if (
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+            theme = "dark";
+        }
+        document.documentElement.classList.add(theme);
+    })();
+</script></head>
+<body>
+<header>
+        <a href="/" class="logo">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 64 64"
+                fill="none">
+                <circle cx="32" cy="32" r="32" fill="#5C5CFF" />
+                <path
+                    d="M4 32L26 26L32 4L38 26L60 32L38 38L32 60L26 38L4 32Z"
+                    fill="white"/>
+            </svg> marecnov</a>
             <div id="settingsSocket"></div>
-        </header>
-        <script type="module">
-            import parser from "/parser.js";
-            import t from "/bundles/settings/index.js";
-            parser("settingsSocket", {
-                html: t,
-                scripts: ["settings/script.js"],
-            });
-        </script>
-        <main>
+    </header>
+    <script type="module">
+        import parser from "/parser.js";
+        import t from "/bundles/settings/index.js";
+        parser("settingsSocket", {
+            html: t,
+            scripts: ["settings/script.js"],
+        });
+    </script>
+<main>
 <div id="bioSocket"></div>   
 
 <script type="module">
@@ -94,8 +82,16 @@
 </script>
 
 <section id="mainContent">
-      <article class="post">
-        <div class="title"><h2>AutoCAD Interpolation plugin</h2><p>2 July 2024</p></div><h2>Contents</h2><section id="Contents"></section>
+      
+
+<article class="post">
+        <div class="title">
+            
+            <h2>AutoCAD Interpolation plugin</h2>
+            <p> <i class="fa fa-calendar-o" aria-hidden="true"></i> 2 Jul 2024</p>
+            </div>
+        <h2>Contents</h2>
+<section id="Contents"></section>
 <script>
     document.addEventListener("DOMContentLoaded", update)
     function update(){
@@ -246,11 +242,13 @@ INTRS, *INTERPOLATIONSETUP
 <li>DivisionLineLength - 5</li>
 </ul>
 </section>
-      </article>
+        
+      </article> 
 
 </section>
+
     <div id="recentPosts"></div>
-    <script>
+<script>
 !async function(){const e=document.getElementById("recentPosts"),t=location.pathname.startsWith("/ru"),n=t?"ru/":"";try{const r=await fetch("/"+n),o=new DOMParser().parseFromString(await r.text(),"text/html"),a=[];o.querySelectorAll("article.post").forEach(e=>{const t=e.querySelector("a[href]"),n=e.querySelector("h2");t&&n&&a.push({t:n.textContent.trim(),u:t.getAttribute("href"),d:e.querySelector("p")?e.querySelector("p").textContent.trim():""})});e.innerHTML=function(e,t,n=8){let r=`<h3>${t?"Последние Посты":"Recent Posts"}</h3>`;return e.slice(0,n).forEach(n=>{const o=location.pathname===n.u||location.pathname.endsWith(n.u);r+=`<a href="${n.u}" ${o?'class="current"':""}><b>${n.t}</b> <small>${n.d}</small></a>`}),r}(a,t)}catch(e){console.error(e)}}();
 </script>
 
