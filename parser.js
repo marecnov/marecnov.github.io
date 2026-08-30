@@ -20,8 +20,7 @@ function loadContent(socketID, data){
 
 export default function parser(socketID,parser_data){
     if(parser_data.html){
-        const htmlIndex = parser_data.html[1] && window.location.pathname.startsWith("/ru") ? 1 : 0;
-            loadContent(socketID,{ html: parser_data.html[htmlIndex] });
+        loadContent(socketID,{ html: parser_data.html });
     }
     parser_data.css?.forEach((href) => 
         loadContent(socketID, { href })
